@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Study Connect helps students find compatible study partners, discover campus events, and collaborate more effectively.">
+  <title>Study Connect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <div class="brand">Study Connect</div>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+      <div id="nav-menu" class="nav-links" data-collapsible>
+        <a href="#communities">Communities</a>
+        <a href="#resources">Resources</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+      </div>
+    </nav>
+    <div class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Get Started</p>
+        <h1>Find your study partners today.</h1>
+        <p class="lede">Set up your profile and connect with peers who share your courses and study interests.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="signup.html">Get Started</a>
+        </div>
+      </div>
+      <div class="hero-mockup">
+        <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg" class="chat-mockup">
+          <defs>
+            <filter id="screen-shadow" x="-50%" y="-50%" width="200%" height="200%">
+              <feDropShadow dx="0" dy="18" stdDeviation="24" flood-opacity="0.2" flood-color="#0a1b3c"/>
+            </filter>
+          </defs>
+          
+          <!-- Monitor bezel/frame -->
+          <rect x="8" y="8" width="504" height="310" rx="24" ry="24" fill="#2a2a2a" stroke="none" filter="url(#screen-shadow)"/>
+          
+          <!-- Monitor screen area - white -->
+          <rect x="16" y="16" width="488" height="286" rx="20" ry="20" fill="#ffffff" stroke="none"/>
+          
+          <!-- Subtle stand -->
+          <rect x="210" y="308" width="100" height="16" rx="4" ry="4" fill="#2a2a2a" stroke="none"/>
+          <rect x="220" y="322" width="80" height="6" rx="2" ry="2" fill="#1a1a1a" stroke="none"/>
+          
+          <!-- Chat header -->
+          <rect x="16" y="16" width="488" height="48" rx="20" ry="20" fill="#f9fbff" stroke="none"/>
+          <circle cx="38" cy="40" r="8" fill="#26a65b" opacity="0.25"/>
+          <text x="54" y="42" font-family="'DM Sans', sans-serif" font-size="12" font-weight="600" fill="#0b1220">Jane</text>
+          
+          
+          <!-- Divider line -->
+          <line x1="16" y1="66" x2="504" y2="66" stroke="#e5e7eb" stroke-width="1"/>
+          
+          <!-- Chat messages area -->
+          <!-- Message 1: Student A (left) -->
+          <g>
+            <!-- Avatar -->
+            <circle cx="32" cy="88" r="10" fill="#e8f5e9"/>
+            <circle cx="32" cy="88" r="8" fill="#c8e6c9"/>
+            
+            <!-- Message bubble -->
+            <path d="M 48 80 Q 48 76 52 76 L 240 76 Q 244 76 244 80 L 244 104 Q 244 108 240 108 L 52 108 Q 48 108 48 104 Z" fill="#e8f5e9" stroke="none"/>
+            
+            <!-- Text -->
+            <text x="56" y="89" font-family="'DM Sans', sans-serif" font-size="10" fill="#0b1220" font-weight="500">Hi, want to study together?</text>
+            <text x="56" y="102" font-family="'DM Sans', sans-serif" font-size="10" fill="#0b1220" font-weight="500">I'm also from SOI.</text>
+          </g>
+          
+          <!-- Message 2: Student B (right) -->
+          <g>
+            <!-- Avatar -->
+            <circle cx="488" cy="134" r="10" fill="#e3f2fd"/>
+            <circle cx="488" cy="134" r="8" fill="#bbdefb"/>
+            
+            <!-- Message bubble -->
+            <path d="M 280 126 Q 280 122 284 122 L 472 122 Q 476 122 476 126 L 476 148 Q 476 152 472 152 L 284 152 Q 280 152 280 148 Z" fill="#26a65b" stroke="none"/>
+            
+            <!-- Text -->
+            <text x="468" y="135" font-family="'DM Sans', sans-serif" font-size="10" fill="#ffffff" font-weight="500" text-anchor="end">Sure! When do you want to meet?</text>
+          </g>
+          
+          <!-- Message 3: Student A (left) -->
+          <g>
+            <!-- Avatar -->
+            <circle cx="32" cy="184" r="10" fill="#e8f5e9"/>
+            <circle cx="32" cy="184" r="8" fill="#c8e6c9"/>
+            
+            <!-- Message bubble -->
+            <path d="M 48 166 Q 48 162 52 162 L 272 162 Q 276 162 276 166 L 276 216 Q 276 220 272 220 L 52 220 Q 48 220 48 216 Z" fill="#e8f5e9" stroke="none"/>
+            
+            <!-- Text -->
+            <text x="56" y="177" font-family="'DM Sans', sans-serif" font-size="10" fill="#0b1220" font-weight="500">Maybe this week Tuesday at 3pm —</text>
+            <text x="56" y="190" font-family="'DM Sans', sans-serif" font-size="10" fill="#0b1220" font-weight="500">where works for you?</text>
+          </g>
+          
+          <!-- Input area -->
+          <rect x="16" y="240" width="488" height="62" rx="20" ry="20" fill="#f9fbff" stroke="none"/>
+          
+          <!-- Input field -->
+          <rect x="26" y="250" width="468" height="32" rx="16" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+          
+          <!-- Placeholder text -->
+          <text x="36" y="271" font-family="'DM Sans', sans-serif" font-size="10" fill="#a8b5c7">Type a message...</text>
+          
+          <!-- Send button -->
+          <circle cx="490" cy="266" r="11" fill="#26a65b"/>
+          <text x="490" y="271" font-family="'Space Grotesk', sans-serif" font-size="9" fill="#ffffff" text-anchor="middle" font-weight="700">→</text>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="highlights" class="section">
+      <div class="section-heading" data-animate>
+        <p class="eyebrow">Why StudyConnect</p>
+        <h2>Everything you need to stay in the loop.</h2>
+        <p class="lede">Find compatible study partners, collaborate on projects, and stay organised with smart matching and calendar integration.</p>
+      </div>
+      <div class="grid features" data-animate>
+        <article class="feature-card">
+          <h3>Smart matching</h3>
+          <p>Personalised recommendations based on your school, course, and study interests — helping you find the right study partners for exams, projects, or FYP.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Group spaces</h3>
+          <p>Chat, share files, and coordinate study sessions without leaving the platform.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Reminders & scheduling</h3>
+          <p>Book study sessions that automatically sync to your calendar with reminders to keep you organised and accountable.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Dynamic study interests</h3>
+          <p>See study interests tailored to your field — from Programming and Data Analysis for Infocomm, to Finance and Marketing for Business students.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="communities" class="section">
+      <div class="section-heading" data-animate>
+        <p class="eyebrow">Communities</p>
+        <h2>Join or start a group.</h2>
+        <p class="lede">Build spaces around shared interests with built-in messaging, polls, and RSVPs.</p>
+      </div>
+      <div class="grid three" data-animate>
+        <article class="tile">
+          <h3>Discovery filters</h3>
+          <p>Surface groups by interest, time commitment, accessibility, and meeting format.</p>
+        </article>
+        <article class="tile">
+          <h3>Moderator tools</h3>
+          <p>Approve members, set codes of conduct, and automate onboarding.</p>
+        </article>
+        <article class="tile">
+          <h3>Signal boosts</h3>
+          <p>Spotlight new groups to nearby students who have matching interests.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="resources" class="section">
+      <div class="section-heading" data-animate>
+        <p class="eyebrow">Impact</p>
+        <h2>Campus engagement at a glance.</h2>
+      </div>
+      <div class="stats" data-animate>
+        <div class="stat">
+          <p class="stat-number">87%</p>
+          <p class="stat-label">students say they discover more events.</p>
+        </div>
+        <div class="stat">
+          <p class="stat-number">3.4x</p>
+          <p class="stat-label">increase in RSVPs with reminders on.</p>
+        </div>
+        <div class="stat">
+          <p class="stat-number">12k</p>
+          <p class="stat-label">messages across active groups weekly.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Student quotes">
+      <div class="section-heading" data-animate>
+        <p class="eyebrow">Voices</p>
+        <h2>Built for students and coordinators.</h2>
+      </div>
+      <div class="quotes" data-animate>
+        <figure class="quote">
+          <blockquote>
+            "Study Connect finally helps me find study partners who share my courses and interests. I no longer study alone."
+          </blockquote>
+          <figcaption>Jordan · Second-year</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>
+            "Finding compatible study partners used to be difficult. Now I can easily connect with peers from my diploma."
+          </blockquote>
+          <figcaption>Priya · Third-year</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-heading">
+        <h3>Connect With Us</h3>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram" class="social-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="TikTok" class="social-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M19.498 3.094c-.478-.478-1.247-.564-1.85-.307l-5.75 3.152A8.247 8.247 0 0 0 8 5a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8v-4.5a5.977 5.977 0 0 0 3.498-1.906c.484-.484.484-1.268 0-1.752l-2.498-2.498zM14 13a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Facebook" class="social-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="social-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="X (Twitter)" class="social-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M23.953 4.57a10 10 0 002.856-3.215 9.954 9.954 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="YouTube" class="social-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-bottom">
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#contact">Contact</a>
+        <a href="#disclaimer">Disclaimer</a>
+        <a href="#privacy">Privacy Statement</a>
+        <a href="#terms">Terms of Service</a>
+        <a href="#sitemap">Sitemap</a>
+      </div>
+
+      <div class="footer-info">
+        <p class="footer-location">Singapore</p>
+        <p class="footer-copyright">© 2026 StudyConnect. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+  <script src="js/app.js?v=3" defer></script>
+</body>
+</html>
