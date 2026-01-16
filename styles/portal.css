@@ -25,7 +25,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--text-color);
-    background-color: var(--gray-light);
+    background-color: var(--white);
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
@@ -35,6 +35,10 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 /* ===================================
@@ -119,170 +123,269 @@ a {
 }
 
 /* ===================================
-   Hero Section
+   Hero Slideshow
    =================================== */
-.hero {
-    background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
-    color: var(--white);
-    padding: 60px 24px;
-    text-align: center;
+.hero-slideshow {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
 }
 
-.hero-container {
+.slideshow-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.slide-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--primary-green);
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(11, 143, 58, 0.85) 0%, rgba(5, 97, 42, 0.85) 100%);
+    z-index: 1;
+}
+
+.slide-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--white);
+    padding: 0 20px;
+    max-width: 800px;
+}
+
+.slide-content h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.slide-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    opacity: 0.95;
+}
+
+.explore-btn {
+    display: inline-block;
+    padding: 14px 36px;
+    background-color: var(--white);
+    color: var(--primary-green);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.explore-btn:hover {
+    background-color: var(--light-green);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.slide-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: 12px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.dot.active {
+    background-color: var(--white);
+    width: 32px;
+    border-radius: 6px;
+}
+
+/* ===================================
+   Title Section
+   =================================== */
+.title-section {
+    padding: 60px 24px 40px;
+    text-align: center;
+    background-color: var(--white);
+}
+
+.title-container {
     max-width: 800px;
     margin: 0 auto;
 }
 
-.hero-title {
-    font-size: 3rem;
+.main-title {
+    font-size: 2.5rem;
     font-weight: 700;
+    color: #000000;
     margin-bottom: 16px;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
 }
 
-.hero-subtitle {
-    font-size: 1.25rem;
-    margin-bottom: 40px;
-    opacity: 0.95;
+.main-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray-medium);
     font-weight: 400;
 }
 
 /* ===================================
-   Search Bar
+   Hero Section (Old - Removed)
    =================================== */
-.search-container {
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.search-input {
-    width: 100%;
-    padding: 16px 50px 16px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 12px;
-    background-color: var(--white);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    outline: none;
-    transition: box-shadow 0.3s ease;
-}
-
-.search-input:focus {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.search-icon {
-    position: absolute;
-    right: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 24px;
-    height: 24px;
-    color: var(--gray-medium);
-    pointer-events: none;
-}
 
 /* ===================================
    Services Section
    =================================== */
 .services-section {
     flex: 1;
-    padding: 60px 24px;
+    padding: 40px 24px 80px;
+    background-color: var(--gray-light);
 }
 
 .services-container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 32px;
 }
 
 /* ===================================
-   Service Cards
+   Service Feature Blocks (Landscape)
    =================================== */
-.service-card {
-    background-color: var(--white);
-    border: 2px solid var(--border-color);
-    border-radius: 16px;
-    padding: 32px;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
+.service-feature {
     position: relative;
+    width: 100%;
+    height: 300px;
+    border-radius: 16px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    background-color: var(--white);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-.service-card::before {
-    content: '';
+.service-feature:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(11, 143, 58, 0.15);
+}
+
+.feature-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-green), var(--dark-green));
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--light-green);
+    z-index: 0;
 }
 
-.service-card:hover::before {
-    transform: scaleX(1);
+.feature-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.2) 100%);
+    z-index: 1;
 }
 
-.service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(11, 143, 58, 0.15);
-    border-color: var(--primary-green);
+.feature-content {
+    position: relative;
+    z-index: 2;
+    padding: 48px;
+    max-width: 600px;
+    color: var(--white);
 }
 
-.card-icon {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    display: block;
-}
-
-.card-title {
-    font-size: 1.5rem;
+.feature-title {
+    font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 12px;
-    color: var(--text-color);
+    margin-bottom: 16px;
+    color: var(--white);
 }
 
-.card-description {
-    font-size: 1rem;
-    color: var(--gray-medium);
+.feature-description {
+    font-size: 1.1rem;
     margin-bottom: 24px;
-    flex: 1;
     line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
 }
 
-.card-link {
-    color: var(--primary-green);
+.feature-btn {
+    display: inline-block;
+    padding: 12px 32px;
+    background-color: var(--primary-green);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
     font-weight: 600;
-    font-size: 0.95rem;
-    display: inline-flex;
-    align-items: center;
-    transition: all 0.2s ease;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(11, 143, 58, 0.3);
 }
 
-.service-card:hover .card-link {
-    transform: translateX(4px);
-    color: var(--dark-green);
+.feature-btn:hover {
+    background-color: var(--dark-green);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(11, 143, 58, 0.4);
 }
 
 /* ===================================
-   No Results
+   Old Service Cards (Removed)
    =================================== */
-.no-results {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--gray-medium);
-    font-size: 1.1rem;
-}
 
 /* ===================================
    Footer
@@ -290,7 +393,7 @@ a {
 .footer {
     background-color: var(--text-color);
     color: var(--white);
-    padding: 24px;
+    padding: 32px 24px;
     text-align: center;
     margin-top: auto;
 }
@@ -298,6 +401,12 @@ a {
 .footer p {
     font-size: 0.95rem;
     opacity: 0.9;
+    margin-bottom: 8px;
+}
+
+.footer-subtitle {
+    font-size: 0.85rem;
+    opacity: 0.7;
 }
 
 /* ===================================
@@ -364,43 +473,67 @@ a {
         padding: 6px 14px;
     }
 
-    .hero {
-        padding: 40px 20px;
+    .hero-slideshow {
+        height: 400px;
     }
 
-    .hero-title {
+    .slide-content h2 {
         font-size: 2rem;
     }
 
-    .hero-subtitle {
-        font-size: 1rem;
-        margin-bottom: 30px;
+    .slide-content p {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
     }
 
-    .search-input {
-        padding: 14px 45px 14px 16px;
-        font-size: 0.95rem;
+    .explore-btn {
+        padding: 12px 28px;
+        font-size: 1rem;
+    }
+
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .main-subtitle {
+        font-size: 1rem;
+    }
+
+    .title-section {
+        padding: 40px 20px 30px;
     }
 
     .services-section {
-        padding: 40px 16px;
+        padding: 30px 16px 60px;
     }
 
-    .services-grid {
-        grid-template-columns: 1fr;
+    .services-container {
         gap: 24px;
     }
 
-    .service-card {
-        padding: 24px;
+    .service-feature {
+        height: auto;
+        min-height: 350px;
+        flex-direction: column;
     }
 
-    .card-icon {
-        font-size: 2.5rem;
+    .feature-overlay {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
     }
 
-    .card-title {
-        font-size: 1.25rem;
+    .feature-content {
+        padding: 32px 24px;
+        max-width: 100%;
+        margin-top: auto;
+    }
+
+    .feature-title {
+        font-size: 1.5rem;
+    }
+
+    .feature-description {
+        font-size: 1rem;
+        margin-bottom: 20px;
     }
 
     .iframe-container {
@@ -432,11 +565,36 @@ a {
         margin-bottom: 8px;
     }
 
-    .hero-title {
+    .hero-slideshow {
+        height: 350px;
+    }
+
+    .slide-content h2 {
         font-size: 1.75rem;
     }
 
-    .hero-subtitle {
+    .slide-content p {
+        font-size: 1rem;
+    }
+
+    .main-title {
+        font-size: 1.75rem;
+    }
+
+    .main-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .feature-content {
+        padding: 24px 20px;
+    }
+
+    .feature-title {
+        font-size: 1.35rem;
+    }
+
+    .feature-btn {
+        padding: 10px 24px;
         font-size: 0.95rem;
     }
 }

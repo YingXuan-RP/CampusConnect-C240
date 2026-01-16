@@ -3,57 +3,101 @@
 // ===================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    initializeSearchFilter();
+    initializeSlideshow();
     initializeIframeHandling();
+    initializeSmoothScroll();
 });
 
 // ===================================
-// Search Filter Functionality
+// Hero Slideshow Functionality
 // ===================================
-function initializeSearchFilter() {
-    const searchInput = document.getElementById('serviceSearch');
-    if (!searchInput) return;
+function initializeSlideshow() {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+    let slideInterval;
 
-    const servicesGrid = document.getElementById('servicesGrid');
-    const noResults = document.getElementById('noResults');
+    if (slides.length === 0) return;
 
-    searchInput.addEventListener('input', function(e) {
-        const searchTerm = e.target.value.toLowerCase().trim();
-        const serviceCards = servicesGrid.querySelectorAll('.service-card');
-        let visibleCount = 0;
+    // Function to show specific slide
+    function showSlide(index) {
+        // Remove active class from all slides and dots
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
 
-        serviceCards.forEach(card => {
-            const searchData = card.getAttribute('data-service') || '';
-            const title = card.querySelector('.card-title')?.textContent || '';
-            const description = card.querySelector('.card-description')?.textContent || '';
-            
-            const searchableContent = (searchData + ' ' + title + ' ' + description).toLowerCase();
-            
-            if (searchableContent.includes(searchTerm)) {
-                card.style.display = 'flex';
-                visibleCount++;
-            } else {
-                card.style.display = 'none';
-            }
-        });
-
-        // Show/hide no results message
-        if (visibleCount === 0 && searchTerm !== '') {
-            noResults.style.display = 'block';
-            servicesGrid.style.display = 'none';
+        // Wrap around if index is out of bounds
+        if (index >= slides.length) {
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = slides.length - 1;
         } else {
-            noResults.style.display = 'none';
-            servicesGrid.style.display = 'grid';
+            currentSlide = index;
         }
+
+        // Add active class to current slide and dot
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    }
+
+    // Function to go to next slide
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    // Function to go to previous slide
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    // Auto-advance slides every 4 seconds
+    function startSlideshow() {
+        slideInterval = setInterval(nextSlide, 4000);
+    }
+
+    // Stop slideshow
+    function stopSlideshow() {
+        clearInterval(slideInterval);
+    }
+
+    // Add click event to dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            stopSlideshow();
+            showSlide(index);
+            startSlideshow();
+        });
     });
 
-    // Clear search on escape key
-    searchInput.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            searchInput.value = '';
-            searchInput.dispatchEvent(new Event('input'));
-            searchInput.blur();
-        }
+    // Pause on hover
+    const slideshowContainer = document.querySelector('.slideshow-container');
+    if (slideshowContainer) {
+        slideshowContainer.addEventListener('mouseenter', stopSlideshow);
+        slideshowContainer.addEventListener('mouseleave', startSlideshow);
+    }
+
+    // Start the slideshow
+    startSlideshow();
+}
+
+// ===================================
+// Smooth Scroll for Explore Button
+// ===================================
+function initializeSmoothScroll() {
+    const exploreButtons = document.querySelectorAll('.explore-btn');
+    
+    exploreButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     });
 }
 
@@ -144,45 +188,15 @@ function showIframeError() {
 // Accessibility Enhancements
 // ===================================
 
-// Add keyboard navigation for service cards
-document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('keypress', function(e) {
+// Add keyboard navigation for service features
+document.querySelectorAll('.service-feature').forEach(feature => {
+    feature.addEventListener('keypress', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            window.location.href = card.getAttribute('href');
+            window.location.href = feature.getAttribute('href');
         }
     });
 });
-
-// Add focus management
-document.addEventListener('keydown', function(e) {
-    // Focus search on Ctrl/Cmd + K
-    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        const searchInput = document.getElementById('serviceSearch');
-        if (searchInput) {
-            searchInput.focus();
-            searchInput.select();
-        }
-    }
-});
-
-// ===================================
-// Performance Optimization
-// ===================================
-
-// Debounce function for search
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
 
 // ===================================
 // Analytics (Optional - placeholder)
@@ -194,10 +208,10 @@ function trackServiceAccess(serviceName) {
     // analytics.track('service_access', { service: serviceName });
 }
 
-// Track service card clicks
-document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('click', function() {
-        const serviceName = this.querySelector('.card-title')?.textContent;
+// Track service feature clicks
+document.querySelectorAll('.service-feature').forEach(feature => {
+    feature.addEventListener('click', function() {
+        const serviceName = this.querySelector('.feature-title')?.textContent;
         if (serviceName) {
             trackServiceAccess(serviceName);
         }

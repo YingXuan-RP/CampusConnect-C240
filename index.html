@@ -22,82 +22,123 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
-            <h1 class="hero-title">CampusConnect</h1>
-            <p class="hero-subtitle">Your one-stop student support & campus services</p>
-            
-            <!-- Search Bar -->
-            <div class="search-container">
-                <input 
-                    type="text" 
-                    id="serviceSearch" 
-                    class="search-input" 
-                    placeholder="Search services..."
-                    aria-label="Search services">
-                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
+    <!-- Hero Slideshow -->
+    <section class="hero-slideshow">
+        <div class="slideshow-container">
+            <!-- Slide 1 -->
+            <div class="slide active">
+                <div class="slide-image" style="background-image: url('./assets/rp-campus-1.jpg');"></div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h2>CampusConnect Portal</h2>
+                    <p>Everything you need, in one place.</p>
+                    <a href="#services" class="explore-btn">Explore Services</a>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide">
+                <div class="slide-image" style="background-image: url('./assets/rp-campus-2.jpg');"></div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h2>CampusConnect Portal</h2>
+                    <p>Everything you need, in one place.</p>
+                    <a href="#services" class="explore-btn">Explore Services</a>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide">
+                <div class="slide-image" style="background-image: url('./assets/rp-campus-3.jpg');"></div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h2>CampusConnect Portal</h2>
+                    <p>Everything you need, in one place.</p>
+                    <a href="#services" class="explore-btn">Explore Services</a>
+                </div>
+            </div>
+
+            <!-- Slide Indicators -->
+            <div class="slide-indicators">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
             </div>
         </div>
     </section>
 
-    <!-- Services Grid -->
-    <main class="services-section">
+    <!-- Title Section -->
+    <section class="title-section">
+        <div class="title-container">
+            <h1 class="main-title">CampusConnect</h1>
+            <p class="main-subtitle">Your one-stop student support & campus services</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <main class="services-section" id="services">
         <div class="services-container">
-            <div class="services-grid" id="servicesGrid">
-                <!-- Budget Makan -->
-                <a href="./budget-makan.html" class="service-card" data-service="budget makan food dining meal">
-                    <div class="card-icon">🍽️</div>
-                    <h3 class="card-title">Budget Makan</h3>
-                    <p class="card-description">Track your dining expenses and discover affordable meal options on campus</p>
-                    <span class="card-link">Access Service →</span>
-                </a>
+            <!-- Budget Makan -->
+            <a href="./budget-makan.html" class="service-feature">
+                <div class="feature-image" style="background-image: url('./assets/budget-makan.jpg');"></div>
+                <div class="feature-overlay"></div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Budget Makan</h3>
+                    <p class="feature-description">Track your dining expenses and discover affordable meal options on campus</p>
+                    <button class="feature-btn">Open Budget Makan</button>
+                </div>
+            </a>
 
-                <!-- Facilities Booking -->
-                <a href="./facilities-booking.html" class="service-card" data-service="facilities booking room venue space reservation">
-                    <div class="card-icon">📅</div>
-                    <h3 class="card-title">Facilities Booking</h3>
-                    <p class="card-description">Reserve study rooms, sports facilities, and other campus venues</p>
-                    <span class="card-link">Access Service →</span>
-                </a>
+            <!-- Facilities Booking -->
+            <a href="./facilities-booking.html" class="service-feature">
+                <div class="feature-image" style="background-image: url('./assets/facilities-booking.jpg');"></div>
+                <div class="feature-overlay"></div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Facilities Booking</h3>
+                    <p class="feature-description">Reserve study rooms, sports facilities, and other campus venues</p>
+                    <button class="feature-btn">Open Facilities Booking</button>
+                </div>
+            </a>
 
-                <!-- Explore CCAs -->
-                <a href="./explore-ccas.html" class="service-card" data-service="cca club activities extracurricular societies">
-                    <div class="card-icon">🎯</div>
-                    <h3 class="card-title">Explore CCAs</h3>
-                    <p class="card-description">Discover and join co-curricular activities, clubs, and student organizations</p>
-                    <span class="card-link">Access Service →</span>
-                </a>
+            <!-- Explore CCAs -->
+            <a href="./explore-ccas.html" class="service-feature">
+                <div class="feature-image" style="background-image: url('./assets/explore-ccas.jpg');"></div>
+                <div class="feature-overlay"></div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Explore CCAs</h3>
+                    <p class="feature-description">Discover and join co-curricular activities, clubs, and student organizations</p>
+                    <button class="feature-btn">Open Explore CCAs</button>
+                </div>
+            </a>
 
-                <!-- Peer Support -->
-                <a href="./peer-support.html" class="service-card" data-service="peer support help wellness mental health counseling">
-                    <div class="card-icon">💚</div>
-                    <h3 class="card-title">Peer Support</h3>
-                    <p class="card-description">Access mental wellness resources and connect with peer support services</p>
-                    <span class="card-link">Access Service →</span>
-                </a>
+            <!-- Peer Support -->
+            <a href="./peer-support.html" class="service-feature">
+                <div class="feature-image" style="background-image: url('./assets/peer-support.jpg');"></div>
+                <div class="feature-overlay"></div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Peer Support</h3>
+                    <p class="feature-description">Access mental wellness resources and connect with peer support services</p>
+                    <button class="feature-btn">Open Peer Support</button>
+                </div>
+            </a>
 
-                <!-- StudyConnect -->
-                <a href="./studyconnect.html" class="service-card" data-service="study connect partner group tutor academic learning">
-                    <div class="card-icon">📚</div>
-                    <h3 class="card-title">StudyConnect</h3>
-                    <p class="card-description">Find study partners, form study groups, and collaborate on academic projects</p>
-                    <span class="card-link">Access Service →</span>
-                </a>
-            </div>
-
-            <!-- No Results Message -->
-            <div id="noResults" class="no-results" style="display: none;">
-                <p>No services found matching your search.</p>
-            </div>
+            <!-- StudyConnect -->
+            <a href="./studyconnect.html" class="service-feature">
+                <div class="feature-image" style="background-image: url('./assets/studyconnect.jpg');"></div>
+                <div class="feature-overlay"></div>
+                <div class="feature-content">
+                    <h3 class="feature-title">StudyConnect</h3>
+                    <p class="feature-description">Find study partners, form study groups, and collaborate on academic projects</p>
+                    <button class="feature-btn">Open StudyConnect</button>
+                </div>
+            </a>
         </div>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
         <p>Republic Polytechnic • Singapore</p>
+        <p class="footer-subtitle">For student use only</p>
     </footer>
 
     <script src="./scripts/portal.js"></script>
