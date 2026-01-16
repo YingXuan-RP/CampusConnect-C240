@@ -1,0 +1,21 @@
+PLACEHOLDER FILE
+================
+
+This is a placeholder for the main campus hero image used in the portal homepage.
+
+Location: /assets/rp-campus.jpg
+Usage: Hero background image in the full-width hero section (index.html)
+
+Specifications:
+- Recommended size: 1920x1080px or larger (for full-width coverage)
+- Format: JPG/JPEG
+- Quality: High resolution recommended for desktop and mobile
+- Content: Republic Polytechnic campus image (preferably the main building/outdoor area)
+
+The CSS is configured to use:
+- background: url('./assets/rp-campus.jpg') center/cover no-repeat fixed;
+- This creates a fixed background with centered positioning and full coverage
+
+To add the real image:
+1. Replace this placeholder with the actual rp-campus.jpg file
+2. The image will automatically display in the hero section with parallax effect on desktop
