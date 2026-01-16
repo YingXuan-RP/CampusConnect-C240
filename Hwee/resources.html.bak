@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Resources — PeerSupportSite</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <h1 class="site-title"><a href="index.html">PeerSupportSite</a></h1>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="resources.html">Resources</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main">
+        <section class="hero">
+            <h2>Support Resources</h2>
+            <p class="lead">Campus contacts and helplines you can reach for help or urgent support.</p>
+        </section>
+
+        <section class="card">
+            <h3>Support Resources</h3>
+            <p>Below are some common campus and helpline resources. Replace these with your institution's correct
+                contacts.</p>
+            <ul class="resources-list">
+                <li>
+                    <strong>Campus Counselling Centre</strong>
+                    <p>Phone: (555) 123-4567 — Drop-in hours weekdays 9am–4pm</p>
+                </li>
+                <li>
+                    <strong>Residence Support</strong>
+                    <p>Phone: (555) 234-5678 — For on-campus students</p>
+                </li>
+                <li>
+                    <strong>National Helpline (example)</strong>
+                    <p>Phone: 1-800-HELP — 24/7 confidential support</p>
+                </li>
+            </ul>
+            <p class="muted">If you are in immediate danger, call your local emergency services.</p>
+        </section>
+    </main>
+    <script src="js/app.js" defer></script>
+
+    <!-- Flowise REST API Integration -->
+    <script>
+        // Flowise API Configuration
+        const FLOWISE_CONFIG = {
+            apiHost: "https://cloud.flowiseai.com",
+            chatflowId: "a7d8418d-c0f1-4750-a927-2e7107d173a3",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+
+        // Main Query Function - Send questions to Flowise
+        async function queryFlowise(question) {
+            try {
+                const response = await fetch(
+                    `${FLOWISE_CONFIG.apiHost}/api/v1/prediction/${FLOWISE_CONFIG.chatflowId}`,
+                    {
+                        method: "POST",
+                        headers: FLOWISE_CONFIG.headers,
+                        body: JSON.stringify({
+                            question: question
+                        })
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                return result;
+            } catch (error) {
+                console.error("Flowise Query Error:", error);
+                return { error: error.message };
+            }
+        }
+
+        // Demo: Call the chatbot with a test question
+        // This runs once when the page loads - you can remove it later
+        (async function demoQuery() {
+            console.log("🤖 Sending demo question to Flowise...");
+
+            const response = await queryFlowise("Hey, how are you?");
+
+            console.log("📩 Flowise Response:", response);
+
+            // Display response text if available
+            if (response.text) {
+                console.log("💬 Bot says:", response.text);
+            }
+        })();
+
+        // Optional: Function to easily query the bot from anywhere
+        // Usage: sendChatMessage("What can you help me with?")
+        window.sendChatMessage = async function (message) {
+            console.log("👤 User:", message);
+            const response = await queryFlowise(message);
+            if (response.text) {
+                console.log("🤖 Bot:", response.text);
+            }
+            return response;
+        };
+    </script>
+    <!-- Chatbot Widget HTML -->
+    <div id="chatbotWidget" class="chatbot-widget">
+        <div id="chatbotContent" class="chatbot-content">
+            <div class="chatbot-header">
+                <h3>Chat Support</h3>
+                <button id="closeChatbot" class="chatbot-close" aria-label="Close chat">✕</button>
+            </div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <div class="chat-input-area">
+                <input id="chatInput" type="text" class="chat-input" placeholder="Ask me anything..."
+                    aria-label="Chat message input">
+                <button id="sendChatBtn" class="chat-send" aria-label="Send message">➤</button>
+            </div>
+        </div>
+        <button id="chatbotToggle" class="chatbot-toggle" aria-label="Open chat">💬</button>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WellBeing Hub — Emotional Support for Students</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <h1 class="site-title"><a href="index.html">💚 WellBeing Hub</a></h1>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="resources.html">Crisis Support</a>
+                <a href="about.html">About</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggle" class="btn btn-icon" aria-pressed="false"
+                    aria-label="Toggle dark mode">🌙</button>
+                <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container main" id="main">
+        <!-- Hero Section with Chatbot CTA -->
+        <section class="hero hero-wellness">
+            <div class="hero-inner">
+                <div class="hero-copy">
+                    <h2>You're Never Alone in This</h2>
+                    <p class="lead">A safe space for emotional support, positivity, and wellness. Talk to our AI
+                        counselor, share encouragement with peers, and brighten your day.</p>
+                    <div class="hero-ctas">
+                        <button id="openChatBtn" class="btn btn-large btn-primary">💬 Chat with Support</button>
+                        <a class="btn btn-large btn-ghost" href="#encouragement">See Encouragement Wall</a>
+                    </div>
+                </div>
+                <div class="hero-media" aria-hidden="true">
+                    <div class="hero-illustration">🌟</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Positivity Prompt -->
+        <section class="positivity-prompt card">
+            <div class="prompt-content">
+                <span class="prompt-icon">✨</span>
+                <div class="prompt-text">
+                    <h3>Today's Positivity Prompt</h3>
+                    <p id="dailyPrompt" class="prompt-message">What's one small thing you're grateful for today?</p>
+                </div>
+                <button id="nextPrompt" class="btn-icon" aria-label="Next prompt">→</button>
+            </div>
+        </section>
+
+        <!-- Two Column Layout -->
+        <div class="grid">
+            <div class="col main-col">
+
+                <!-- Mood Check-in -->
+                <section id="mood" class="card mood-card" aria-labelledby="moodLabel">
+                    <h3 id="moodLabel">💭 How Are You Feeling Right Now?</h3>
+                    <p class="lead">Quick check-in to track your wellness journey</p>
+                    <div class="mood-options" id="moodOptions" role="radiogroup" aria-label="Mood selector">
+                        <button class="mood" data-mood="joyful">Joyful 😊</button>
+                        <button class="mood" data-mood="calm">Calm 😌</button>
+                        <button class="mood" data-mood="okay">Okay 😐</button>
+                        <button class="mood" data-mood="stressed">Stressed 😰</button>
+                        <button class="mood" data-mood="struggling">Struggling 😢</button>
+                    </div>
+                    <div id="moodResponse" class="mood-response" aria-live="polite" role="status"></div>
+                </section>
+
+                <!-- Mood Booster Activities -->
+                <section class="card activities-card">
+                    <h3>🎮 Mood Booster Activities</h3>
+                    <p class="lead">Quick activities to brighten your day</p>
+                    <div class="activities-grid" id="activitiesGrid"></div>
+                </section>
+
+                <!-- Anonymous Encouragement Wall -->
+                <section id="encouragement" class="card encouragement-card">
+                    <h3>🌈 Anonymous Encouragement Wall</h3>
+                    <p class="lead">Messages of support from your peers</p>
+
+                    <div class="encouragement-form">
+                        <h4>Share Your Encouragement</h4>
+                        <textarea id="encouragementInput" placeholder="Share a kind message or positive thought..."
+                            maxlength="200" rows="3"></textarea>
+                        <p class="char-count"><span id="charCount">0</span>/200</p>
+                        <button id="submitEncouragement" class="btn btn-primary">Send Encouragement 💌</button>
+                    </div>
+
+                    <div id="encouragementWall" class="encouragement-wall"></div>
+                </section>
+
+                <!-- Gratitude Journal -->
+                <section class="card gratitude-card">
+                    <h3>📔 Gratitude Journal</h3>
+                    <p class="lead">Reflect on the positive moments in your life</p>
+
+                    <div class="gratitude-form">
+                        <h4>Today's Gratitude</h4>
+                        <textarea id="gratitudeInput" placeholder="What are you grateful for today? Write freely..."
+                            maxlength="500" rows="4"></textarea>
+                        <p class="char-count"><span id="gratCount">0</span>/500</p>
+                        <button id="submitGratitude" class="btn btn-primary">Save Reflection 💝</button>
+                    </div>
+
+                    <div class="gratitude-history">
+                        <h4>Recent Reflections</h4>
+                        <div id="gratitudeList" class="gratitude-list"></div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="col sidebar-col">
+
+                <!-- Wellness Stats -->
+                <div class="card stats-card">
+                    <h4>Your Wellness Journey</h4>
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <div class="stat-number" id="statMoodChecks">0</div>
+                            <div class="stat-label">Mood Check-ins</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="statGratitude">0</div>
+                            <div class="stat-label">Reflections</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="statEncouragement">0</div>
+                            <div class="stat-label">Messages Shared</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Wellness Tips -->
+                <div class="card tips-card">
+                    <h4>💡 Quick Wellness Tip</h4>
+                    <p id="wellnessTip" class="tip-text"></p>
+                    <button id="nextTip" class="btn btn-small ghost">New Tip</button>
+                </div>
+
+                <!-- Crisis Support -->
+                <div class="card crisis-card">
+                    <h4>🆘 In Crisis?</h4>
+                    <p class="crisis-text">You're not alone. Help is available 24/7.</p>
+                    <ul class="crisis-list">
+                        <li><strong>988</strong> Suicide & Crisis Lifeline</li>
+                        <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
+                        <li><strong>Campus Counseling:</strong> Check with your school</li>
+                    </ul>
+                    <a href="resources.html" class="btn btn-small ghost">View All Resources →</a>
+                </div>
+
+                <!-- Streak Tracker -->
+                <div class="card streak-card">
+                    <h4>🔥 Your Streak</h4>
+                    <div class="streak-display">
+                        <div class="streak-number" id="streakCount">0</div>
+                        <div class="streak-label">Days in a Row</div>
+                    </div>
+                    <p class="streak-message">Keep coming back to support yourself!</p>
+                </div>
+
+            </aside>
+        </div>
+
+    </main>
+
+    <!-- Flowise Chatbot Configuration -->
+    <script>
+        const FLOWISE_CONFIG = {
+            apiHost: "https://cloud.flowiseai.com",
+            chatflowId: "e4723add-ad6f-4995-aca3-bfa8af411463",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+    </script>
+
+    <!-- Chatbot Widget HTML -->
+    <div id="chatbotWidget" class="chatbot-widget" role="region" aria-label="Support chatbot">
+        <button id="chatToggle" class="chat-toggle" aria-label="Open support chat" aria-expanded="false">💬</button>
+
+        <div id="chatPanel" class="chat-panel" hidden>
+            <div class="chat-header">
+                <h3>Support Chat</h3>
+                <button id="chatClose" class="btn-icon" aria-label="Close chat">✕</button>
+            </div>
+            <div id="chatMessages" class="chat-messages" role="log" aria-label="Chat messages"></div>
+            <div class="chat-input">
+                <textarea id="chatInput" placeholder="How are you feeling? I'm here to listen..." rows="2"></textarea>
+                <button id="chatSend" class="btn btn-small btn-primary" aria-label="Send message">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>WellBeing Hub — A safe, supportive space for student wellness. <a href="about.html">Learn more</a> | <a
+                href="resources.html">Crisis Support</a></p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

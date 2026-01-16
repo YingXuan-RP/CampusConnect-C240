@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>StudyBuddy — Your AI Student Companion</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <h1 class="site-title"><a href="index.html">🎓 StudyBuddy</a></h1>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="resources.html">Study Guides</a>
+                <a href="about.html">About</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggle" class="btn" aria-pressed="false">Dark</button>
+                <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container main" id="main">
+        <!-- Hero Section with Chatbot CTA -->
+        <section class="hero hero-engaging">
+            <div class="hero-inner">
+                <div class="hero-copy">
+                    <h2>Your Personal AI Study Companion</h2>
+                    <p class="lead">Get instant answers, study tips, motivation, and mood check-ins all in one place.
+                        Your success matters to us.</p>
+                    <div class="hero-ctas">
+                        <button id="openChatBtn" class="btn btn-large">💬 Chat with AI Now</button>
+                        <a class="btn ghost btn-large" href="#achievements">Unlock Badges</a>
+                    </div>
+                </div>
+                <div class="hero-media" aria-hidden="true">
+                    <div class="hero-illustration">🚀</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Motivation -->
+        <section class="affirmation-banner card">
+            <div class="affirmation-content">
+                <span class="affirmation-icon">✨</span>
+                <div class="affirmation-text">
+                    <h3>Today's Motivation</h3>
+                    <p id="dailyAffirmation" class="affirmation-message">You are capable of amazing things.</p>
+                </div>
+                <button id="nextAffirmation" class="btn-icon" aria-label="Next affirmation">→</button>
+            </div>
+        </section>
+
+        <!-- Two Column Layout -->
+        <div class="grid">
+            <div class="col main-col">
+
+                <!-- Quick Study Hacks -->
+                <section class="card study-hacks-card">
+                    <h3>⚡ Quick Study Hacks</h3>
+                    <p class="lead">Proven productivity tips you can use right now</p>
+                    <div id="studyHacksContainer" class="hacks-grid"></div>
+                    <button id="getRandomHack" class="btn ghost">Get Random Hack</button>
+                </section>
+
+                <!-- Mood & Wellness Check-in -->
+                <section id="mood" class="card mood-card" aria-labelledby="moodLabel">
+                    <h3 id="moodLabel">💭 How Are You Feeling?</h3>
+                    <p class="lead">Quick check-in to track your wellness</p>
+                    <div class="mood-options" id="moodOptions" role="radiogroup" aria-label="Mood selector">
+                        <button class="mood" data-mood="energized">Energized 🔥</button>
+                        <button class="mood" data-mood="calm">Calm 😌</button>
+                        <button class="mood" data-mood="neutral">Neutral 😐</button>
+                        <button class="mood" data-mood="stressed">Stressed 😰</button>
+                        <button class="mood" data-mood="overwhelmed">Overwhelmed 😭</button>
+                    </div>
+                    <div id="moodMessage" class="mood-message" aria-live="polite"></div>
+                </section>
+
+                <!-- Event Calendar Reminders -->
+                <section class="card calendar-card">
+                    <h3>📅 Upcoming Events & Deadlines</h3>
+                    <p class="lead">Never miss an important date</p>
+                    <div id="eventsList" class="events-list"></div>
+                    <form id="eventForm" class="small-form" aria-label="Add an event">
+                        <input id="eventName" type="text" placeholder="Event name (e.g., Midterm Exam)"
+                            aria-label="Event name">
+                        <input id="eventDate" type="date" aria-label="Event date">
+                        <div class="form-actions">
+                            <button type="submit" class="btn">Add Event</button>
+                        </div>
+                    </form>
+                </section>
+
+            </div>
+
+            <aside class="col side-col">
+
+                <!-- Mood Progress Tracker -->
+                <section class="card mood-tracker-card">
+                    <h3>📈 Your Mood This Week</h3>
+                    <p class="lead">Track your emotional patterns</p>
+                    <div class="mood-chart" id="moodChart" aria-label="Mood chart for the week"></div>
+                    <div class="mood-stats" id="moodStats"></div>
+                </section>
+
+                <!-- Gamified Achievements System -->
+                <section id="achievements" class="card achievements-card">
+                    <h3>🏆 Your Achievements</h3>
+                    <p class="lead">Unlock badges as you complete actions</p>
+                    <div id="badgesContainer" class="badges-grid"></div>
+                    <p class="achievement-progress" id="achievementProgress">Progress: <span
+                            id="achieveCount">0</span>/10 badges</p>
+                </section>
+
+                <!-- Coping Strategies -->
+                <section class="card coping-card">
+                    <h3>🛡️ Quick Coping Strategies</h3>
+                    <p class="lead">Quick techniques for tough moments</p>
+                    <div id="copingStrategies" class="coping-grid"></div>
+                </section>
+
+                <!-- Crisis Support -->
+                <section class="card crisis-support">
+                    <h3>🆘 Need Immediate Help?</h3>
+                    <p class="lead">You're not alone. 24/7 support available</p>
+                    <ul class="crisis-links">
+                        <li><strong>Crisis Hotline:</strong> <a href="tel:988">988</a> (call or text)</li>
+                        <li><strong>Crisis Text:</strong> Text HOME to 741741</li>
+                        <li><strong>Emergency:</strong> <a href="tel:911">911</a></li>
+                    </ul>
+                </section>
+
+            </aside>
+        </div>
+
+        <footer class="site-footer card">
+            <p>StudyBuddy is your personal learning companion. Always available when you need support, motivation, or
+                just someone to chat with. Remember: taking care of your mental health is part of your success. 💚</p>
+        </footer>
+    </main>
+
+    <script src="js/app.js" defer></script>
+
+    <!-- Toast notifications -->
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Flowise REST API Integration -->
+    <script>
+        // ============================================================
+        // FLOWISE CHATBOT CONFIGURATION
+        // ============================================================
+        // IMPORTANT: Replace 'chatflowId' with your actual Flowise flow ID
+        // Get this from your Flowise dashboard when you create a chatflow
+        // Example: chatflowId: "your-actual-id-here"
+
+        const FLOWISE_CONFIG = {
+            apiHost: "https://cloud.flowiseai.com",
+            chatflowId: "a7d8418d-c0f1-4750-a927-2e7107d173a3", // <- REPLACE WITH YOUR FLOW ID
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+
+        // Main Query Function - Send questions to Flowise
+        async function queryFlowise(question) {
+            try {
+                const response = await fetch(
+                    `${FLOWISE_CONFIG.apiHost}/api/v1/prediction/${FLOWISE_CONFIG.chatflowId}`,
+                    {
+                        method: "POST",
+                        headers: FLOWISE_CONFIG.headers,
+                        body: JSON.stringify({
+                            question: question
+                        })
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                return result;
+            } catch (error) {
+                console.error("Flowise Query Error:", error);
+                return { error: error.message };
+            }
+        }
+
+        // Expose the query function globally for use in chat widget
+        window.queryFlowise = queryFlowise;
+    </script>
+
+    <!-- Chatbot Widget HTML -->
+    <div id="chatbotWidget" class="chatbot-widget">
+        <div id="chatbotContent" class="chatbot-content">
+            <div class="chatbot-header">
+                <h3>StudyBuddy AI</h3>
+                <button id="closeChatbot" class="chatbot-close" aria-label="Close chat">✕</button>
+            </div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <div class="chat-input-area">
+                <input id="chatInput" type="text" class="chat-input" placeholder="Ask me anything..."
+                    aria-label="Chat message input">
+                <button id="sendChatBtn" class="chat-send" aria-label="Send message">➤</button>
+            </div>
+        </div>
+        <button id="chatbotToggle" class="chatbot-toggle" aria-label="Open chat">💬</button>
+    </div>
+</body>
+
+</html>

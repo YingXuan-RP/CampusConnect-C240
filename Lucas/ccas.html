@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse and join your favorite CCAs">
+    <title>Find Your Crew - CCA Connect</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cca-dark-blue': '#0f172a',
+                        'cca-blue': '#1e3a8a',
+                        'cca-light-blue': '#3b82f6',
+                        'cca-lime': '#84cc16',
+                        'cca-purple': '#a855f7',
+                        'cca-light': '#f8fafc',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                scroll-behavior: auto;
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+        
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid #a855f7;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-cca-light text-gray-900 font-sans">
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-white shadow-lg border-b-4 border-cca-lime">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Brand -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-cca-blue to-cca-purple rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">CC</span>
+                    </div>
+                    <span class="text-xl font-bold text-cca-dark-blue hidden sm:inline">CCA Connect</span>
+                </div>
+                
+                <!-- Back Button -->
+                <a href="index.html" class="px-6 py-2 bg-cca-lime text-cca-dark-blue font-bold rounded-lg hover:bg-yellow-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cca-lime">
+                    ← Back Home
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <!-- Header Section -->
+        <section class="py-16 bg-gradient-to-br from-cca-dark-blue to-cca-blue">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
+                    Find Your Crew
+                </h1>
+                <p class="text-xl text-gray-100 max-w-2xl mx-auto">
+                    Discover and join amazing CCAs that match your interests
+                </p>
+            </div>
+        </section>
+        
+        <!-- CCAs Grid -->
+        <section class="py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Search Bar -->
+                <div class="mb-12 text-center">
+                    <div class="max-w-md mx-auto">
+                        <label for="cca-search" class="block text-lg font-semibold text-cca-dark-blue mb-4">Search CCAs</label>
+                        <div class="relative">
+                            <input type="text" id="cca-search" placeholder="Type to search CCAs..." class="w-full px-4 py-3 pl-12 pr-12 text-gray-900 bg-white border-2 border-cca-light-blue rounded-lg focus:outline-none focus:ring-2 focus:ring-cca-blue focus:border-transparent shadow-md transition-all duration-200">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </div>
+                            <button id="clear-search" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 transition-colors duration-200" style="display: none;">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2">Search by CCA name or description</p>
+                    </div>
+                </div>
+                
+                <!-- Arts, Culture & Media -->
+                <div class="mb-16">
+                    <h2 class="text-3xl font-bold text-cca-dark-blue mb-8 text-center">Arts, Culture & Media</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Beats Encore -->
+                        <div class="bg-gradient-to-br from-cca-light-blue to-cca-blue rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🎵</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Beats Encore</h3>
+                                <p class="text-gray-100 mb-4">Experience the rhythm and beats of modern music production.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 50+</p>
+                                    <p>📍 Location: Music Studio</p>
+                                </div>
+                                <a href="success.html?cca=Beats%20Encore" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Chinese Ensemble -->
+                        <div class="bg-gradient-to-br from-cca-purple to-pink-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🎼</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Chinese Ensemble</h3>
+                                <p class="text-gray-100 mb-4">Celebrate Chinese musical traditions and cultural heritage.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 40+</p>
+                                    <p>📍 Location: Ensemble Room</p>
+                                </div>
+                                <a href="success.html?cca=Chinese%20Ensemble" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Dikir Barat -->
+                        <div class="bg-gradient-to-br from-red-400 to-red-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🎶</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Dikir Barat</h3>
+                                <p class="text-gray-100 mb-4">Experience Malay traditional choral music and cultural performances.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 35+</p>
+                                    <p>📍 Location: Music Room</p>
+                                </div>
+                                <a href="success.html?cca=Dikir%20Barat" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Gamelan Naga Kencana -->
+                        <div class="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🥁</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Gamelan Naga Kencana</h3>
+                                <p class="text-gray-100 mb-4">Master traditional Indonesian gamelan music and ensemble playing.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 30+</p>
+                                    <p>📍 Location: Music Studio</p>
+                                </div>
+                                <a href="success.html?cca=Gamelan%20Naga%20Kencana" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- GEnRe -->
+                        <div class="bg-gradient-to-br from-green-400 to-green-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🎸</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">GEnRe</h3>
+                                <p class="text-gray-100 mb-4">Explore various music genres and develop your musical talents.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 45+</p>
+                                    <p>📍 Location: Music Room</p>
+                                </div>
+                                <a href="success.html?cca=GEnRe" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Jammerz Arena -->
+                        <div class="bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🎤</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Jammerz Arena</h3>
+                                <p class="text-gray-100 mb-4">Showcase your singing talents and perform on stage.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 40+</p>
+                                    <p>📍 Location: Performance Hall</p>
+                                </div>
+                                <a href="success.html?cca=Jammerz%20Arena" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Replug -->
+                        <div class="bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🔌</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Replug</h3>
+                                <p class="text-gray-100 mb-4">Connect through music and create memorable performances.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 35+</p>
+                                    <p>📍 Location: Music Studio</p>
+                                </div>
+                                <a href="success.html?cca=Replug" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Republic Rhapsody -->
+                        <div class="bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🎵</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Republic Rhapsody</h3>
+                                <p class="text-gray-100 mb-4">Experience the beauty of a cappella music and harmony.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 25+</p>
+                                    <p>📍 Location: Choir Room</p>
+                                </div>
+                                <a href="success.html?cca=Republic%20Rhapsody" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Art.titude -->
+                        <div class="bg-gradient-to-br from-pink-400 to-pink-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🎨</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Art.titude</h3>
+                                <p class="text-gray-100 mb-4">Express your creativity through various visual arts mediums.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 50+</p>
+                                    <p>📍 Location: Art Studio</p>
+                                </div>
+                                <a href="success.html?cca=Art.titude" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Campus Arts Production -->
+                        <div class="bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🎭</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Campus Arts Production</h3>
+                                <p class="text-gray-100 mb-4">Produce and stage theatrical performances and events.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 45+</p>
+                                    <p>📍 Location: Theater</p>
+                                </div>
+                                <a href="success.html?cca=Campus%20Arts%20Production" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Magic IG -->
+                        <div class="bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🎩</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Magic IG</h3>
+                                <p class="text-gray-100 mb-4">Learn the art of magic and illusion through performances.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 20+</p>
+                                    <p>📍 Location: Performance Room</p>
+                                </div>
+                                <a href="success.html?cca=Magic%20IG" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Photo Republic -->
+                        <div class="bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">📸</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Photo Republic</h3>
+                                <p class="text-gray-100 mb-4">Capture and edit stunning photographs for events and projects.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 40+</p>
+                                    <p>📍 Location: Photo Lab</p>
+                                </div>
+                                <a href="success.html?cca=Photo%20Republic" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Radiate909 -->
+                        <div class="bg-gradient-to-br from-violet-400 to-violet-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">📻</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Radiate909</h3>
+                                <p class="text-gray-100 mb-4">Create engaging radio shows and podcast content.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 25+</p>
+                                    <p>📍 Location: Radio Studio</p>
+                                </div>
+                                <a href="success.html?cca=Radiate909" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Indian Cultural Group -->
+                        <div class="bg-gradient-to-br from-orange-400 to-red-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🪈</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Indian Cultural Group</h3>
+                                <p class="text-gray-100 mb-4">Celebrate Indian traditions through dance, music, and cultural events.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 35+</p>
+                                    <p>📍 Location: Cultural Hall</p>
+                                </div>
+                                <a href="success.html?cca=Indian%20Cultural%20Group" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sports & Recreational -->
+                <div class="mb-16">
+                    <h2 class="text-3xl font-bold text-cca-dark-blue mb-8 text-center">Sports & Recreational</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Swimming -->
+                        <div class="bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🏊</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Swimming</h3>
+                                <p class="text-gray-100 mb-4">Dive into competitive swimming and improve your aquatic skills.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 60+</p>
+                                    <p>📍 Location: Swimming Pool</p>
+                                </div>
+                                <a href="success.html?cca=Swimming" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Archery -->
+                        <div class="bg-gradient-to-br from-green-400 to-green-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🏹</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Archery</h3>
+                                <p class="text-gray-100 mb-4">Master the art of precision and focus with traditional archery.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 25+</p>
+                                    <p>📍 Location: Archery Range</p>
+                                </div>
+                                <a href="success.html?cca=Archery" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Athletics -->
+                        <div class="bg-gradient-to-br from-red-400 to-red-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🏃</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Athletics</h3>
+                                <p class="text-gray-100 mb-4">Run, jump, and compete in various track and field events.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 70+</p>
+                                    <p>📍 Location: Track Field</p>
+                                </div>
+                                <a href="success.html?cca=Athletics" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Badminton -->
+                        <div class="bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🏸</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Badminton</h3>
+                                <p class="text-gray-100 mb-4">Perfect your racket skills and enjoy fast-paced badminton matches.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 80+</p>
+                                    <p>📍 Location: Sports Hall</p>
+                                </div>
+                                <a href="success.html?cca=Badminton" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Basketball -->
+                        <div class="bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🏀</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Basketball</h3>
+                                <p class="text-gray-100 mb-4">Experience the thrill of the game on the court.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 80+</p>
+                                    <p>📍 Location: Sports Hall</p>
+                                </div>
+                                <a href="success.html?cca=Basketball" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Bowling -->
+                        <div class="bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🎳</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Bowling</h3>
+                                <p class="text-gray-100 mb-4">Master the strike and spare in competitive bowling.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 40+</p>
+                                    <p>📍 Location: Bowling Alley</p>
+                                </div>
+                                <a href="success.html?cca=Bowling" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Canoeing -->
+                        <div class="bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🚣</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Canoeing</h3>
+                                <p class="text-gray-100 mb-4">Navigate waters and build strength through canoeing adventures.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 30+</p>
+                                    <p>📍 Location: Marina</p>
+                                </div>
+                                <a href="success.html?cca=Canoeing" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Dragon Boat -->
+                        <div class="bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🚣‍♀️</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Dragon Boat</h3>
+                                <p class="text-gray-100 mb-4">Experience team spirit and strength in traditional dragon boat racing.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 50+</p>
+                                    <p>📍 Location: Marina</p>
+                                </div>
+                                <a href="success.html?cca=Dragon%20Boat" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Floorball -->
+                        <div class="bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🏒</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Floorball</h3>
+                                <p class="text-gray-100 mb-4">Play fast-paced indoor hockey with smaller equipment.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 45+</p>
+                                    <p>📍 Location: Sports Hall</p>
+                                </div>
+                                <a href="success.html?cca=Floorball" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Hockey -->
+                        <div class="bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🏑</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Hockey</h3>
+                                <p class="text-gray-100 mb-4">Master field hockey skills and team coordination.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 55+</p>
+                                    <p>📍 Location: Field</p>
+                                </div>
+                                <a href="success.html?cca=Hockey" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Netball -->
+                        <div class="bg-gradient-to-br from-pink-400 to-pink-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🏐</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Netball</h3>
+                                <p class="text-gray-100 mb-4">Develop agility and precision in this fast-paced court sport.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 50+</p>
+                                    <p>📍 Location: Sports Hall</p>
+                                </div>
+                                <a href="success.html?cca=Netball" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Rugby -->
+                        <div class="bg-gradient-to-br from-violet-400 to-violet-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🏉</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Rugby</h3>
+                                <p class="text-gray-100 mb-4">Build strength and teamwork in intense rugby matches.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 40+</p>
+                                    <p>📍 Location: Field</p>
+                                </div>
+                                <a href="success.html?cca=Rugby" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Soccer -->
+                        <div class="bg-gradient-to-br from-green-600 to-green-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">⚽</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Soccer</h3>
+                                <p class="text-gray-100 mb-4">Kick, pass, and score with fellow football enthusiasts.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 90+</p>
+                                    <p>📍 Location: Field</p>
+                                </div>
+                                <a href="success.html?cca=Soccer" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Table Tennis -->
+                        <div class="bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🏓</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Table Tennis</h3>
+                                <p class="text-gray-100 mb-4">Master the art of ping pong and quick reflexes.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 50+</p>
+                                    <p>📍 Location: Games Room</p>
+                                </div>
+                                <a href="success.html?cca=Table%20Tennis" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Taekwondo -->
+                        <div class="bg-gradient-to-br from-red-500 to-red-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🥋</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Taekwondo</h3>
+                                <p class="text-gray-100 mb-4">Learn Korean martial arts and achieve discipline through training.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 35+</p>
+                                    <p>📍 Location: Dojo</p>
+                                </div>
+                                <a href="success.html?cca=Taekwondo" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Tchoukball -->
+                        <div class="bg-gradient-to-br from-lime-400 to-lime-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">⚽</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Tchoukball</h3>
+                                <p class="text-gray-100 mb-4">Experience this unique non-contact team sport from Switzerland.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 25+</p>
+                                    <p>📍 Location: Sports Hall</p>
+                                </div>
+                                <a href="success.html?cca=Tchoukball" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Tennis -->
+                        <div class="bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🎾</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Tennis</h3>
+                                <p class="text-gray-100 mb-4">Perfect your serve and volley in competitive tennis matches.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 45+</p>
+                                    <p>📍 Location: Tennis Courts</p>
+                                </div>
+                                <a href="success.html?cca=Tennis" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Touch Football -->
+                        <div class="bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🏈</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Touch Football</h3>
+                                <p class="text-gray-100 mb-4">Enjoy non-contact American football with touch tackles.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 40+</p>
+                                    <p>📍 Location: Field</p>
+                                </div>
+                                <a href="success.html?cca=Touch%20Football" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Ultimate Frisbee -->
+                        <div class="bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🥏</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Ultimate Frisbee</h3>
+                                <p class="text-gray-100 mb-4">Experience the spirit of the game in this non-contact disc sport.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 35+</p>
+                                    <p>📍 Location: Field</p>
+                                </div>
+                                <a href="success.html?cca=Ultimate%20Frisbee" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Volleyball -->
+                        <div class="bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🏐</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Volleyball</h3>
+                                <p class="text-gray-100 mb-4">Spike, block, and serve your way to victory.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 65+</p>
+                                    <p>📍 Location: Sports Hall</p>
+                                </div>
+                                <a href="success.html?cca=Volleyball" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Aikido -->
+                        <div class="bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🥋</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Aikido</h3>
+                                <p class="text-gray-100 mb-4">Practice Japanese martial arts focusing on harmony and defense.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 20+</p>
+                                    <p>📍 Location: Dojo</p>
+                                </div>
+                                <a href="success.html?cca=Aikido" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Esports -->
+                        <div class="bg-gradient-to-br from-gray-500 to-gray-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🎮</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Esports</h3>
+                                <p class="text-gray-100 mb-4">Compete in organized video gaming tournaments and events.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 60+</p>
+                                    <p>📍 Location: Gaming Lab</p>
+                                </div>
+                                <a href="success.html?cca=Esports" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Handball -->
+                        <div class="bg-gradient-to-br from-rose-400 to-rose-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🤾</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Handball</h3>
+                                <p class="text-gray-100 mb-4">Master throwing and catching in this dynamic team sport.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 30+</p>
+                                    <p>📍 Location: Sports Hall</p>
+                                </div>
+                                <a href="success.html?cca=Handball" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Judo -->
+                        <div class="bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🥋</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Judo</h3>
+                                <p class="text-gray-100 mb-4">Learn Japanese martial arts techniques and grappling.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 25+</p>
+                                    <p>📍 Location: Dojo</p>
+                                </div>
+                                <a href="success.html?cca=Judo" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Muay Thai -->
+                        <div class="bg-gradient-to-br from-red-600 to-red-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🥊</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Muay Thai</h3>
+                                <p class="text-gray-100 mb-4">Train in the art of eight limbs and Thai boxing techniques.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 30+</p>
+                                    <p>📍 Location: Gym</p>
+                                </div>
+                                <a href="success.html?cca=Muay%20Thai" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Interest Groups -->
+                <div class="mb-16">
+                    <h2 class="text-3xl font-bold text-cca-dark-blue mb-8 text-center">Academic Interest Groups</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Aviators Interest Group -->
+                        <div class="bg-gradient-to-br from-sky-400 to-sky-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">✈️</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Aviators Interest Group</h3>
+                                <p class="text-gray-100 mb-4">Explore aviation, aerospace engineering, and flight technology.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 25+</p>
+                                    <p>📍 Location: Engineering Lab</p>
+                                </div>
+                                <a href="success.html?cca=Aviators%20Interest%20Group" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Electronics Interest Group -->
+                        <div class="bg-gradient-to-br from-gray-600 to-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">⚡</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Electronics Interest Group</h3>
+                                <p class="text-gray-100 mb-4">Dive into circuits, microcontrollers, and electronic innovation.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 35+</p>
+                                    <p>📍 Location: Electronics Lab</p>
+                                </div>
+                                <a href="success.html?cca=Electronics%20Interest%20Group" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Logistics & Supply Chain Management IG -->
+                        <div class="bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">📦</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Logistics & Supply Chain Management IG</h3>
+                                <p class="text-gray-100 mb-4">Learn about supply chain optimization and logistics management.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 30+</p>
+                                    <p>📍 Location: Business Lab</p>
+                                </div>
+                                <a href="success.html?cca=Logistics%20%26%20Supply%20Chain%20Management%20IG" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Institution of Mechanical Engineers – Student Chapter -->
+                        <div class="bg-gradient-to-br from-slate-400 to-slate-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">⚙️</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Institution of Mechanical Engineers</h3>
+                                <p class="text-gray-100 mb-4">Explore mechanical engineering principles and innovations.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 40+</p>
+                                    <p>📍 Location: Engineering Lab</p>
+                                </div>
+                                <a href="success.html?cca=Institution%20of%20Mechanical%20Engineers" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Institution of Engineers, Singapore – Student Chapter -->
+                        <div class="bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🔧</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Institution of Engineers, Singapore</h3>
+                                <p class="text-gray-100 mb-4">Network with engineering professionals and learn industry practices.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 45+</p>
+                                    <p>📍 Location: Engineering Hub</p>
+                                </div>
+                                <a href="success.html?cca=Institution%20of%20Engineers%2C%20Singapore" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Project Management Institute – Student Chapter -->
+                        <div class="bg-gradient-to-br from-violet-400 to-violet-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">📊</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Project Management Institute</h3>
+                                <p class="text-gray-100 mb-4">Develop project management skills and methodologies.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 35+</p>
+                                    <p>📍 Location: Business Lab</p>
+                                </div>
+                                <a href="success.html?cca=Project%20Management%20Institute" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Singapore Institute of Aerospace Engineers – Student Chapter -->
+                        <div class="bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🚀</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Singapore Institute of Aerospace Engineers</h3>
+                                <p class="text-gray-100 mb-4">Explore aerospace engineering and aviation technology.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 28+</p>
+                                    <p>📍 Location: Aerospace Lab</p>
+                                </div>
+                                <a href="success.html?cca=Singapore%20Institute%20of%20Aerospace%20Engineers" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Astronomy IG -->
+                        <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🌌</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Astronomy IG</h3>
+                                <p class="text-gray-100 mb-4">Explore the wonders of the universe and celestial bodies.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 30+</p>
+                                    <p>📍 Location: Science Lab</p>
+                                </div>
+                                <a href="success.html?cca=Astronomy%20IG" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Conservation IG -->
+                        <div class="bg-gradient-to-br from-green-500 to-green-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🌿</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Conservation IG</h3>
+                                <p class="text-gray-100 mb-4">Work on environmental conservation and sustainability projects.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 40+</p>
+                                    <p>📍 Location: Outdoor Areas</p>
+                                </div>
+                                <a href="success.html?cca=Conservation%20IG" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Eureka IG -->
+                        <div class="bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">💡</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Eureka IG</h3>
+                                <p class="text-gray-100 mb-4">Discover and innovate through scientific experimentation.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 35+</p>
+                                    <p>📍 Location: Innovation Lab</p>
+                                </div>
+                                <a href="success.html?cca=Eureka%20IG" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Pharmaceutica IG -->
+                        <div class="bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">💊</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Pharmaceutica IG</h3>
+                                <p class="text-gray-100 mb-4">Explore pharmaceutical sciences and drug development.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 25+</p>
+                                    <p>📍 Location: Pharmacy Lab</p>
+                                </div>
+                                <a href="success.html?cca=Pharmaceutica%20IG" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Makers IG -->
+                        <div class="bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🔨</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Makers IG</h3>
+                                <p class="text-gray-100 mb-4">Build and create innovative projects with maker tools.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 45+</p>
+                                    <p>📍 Location: Makerspace</p>
+                                </div>
+                                <a href="success.html?cca=Makers%20IG" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Marine Science IG -->
+                        <div class="bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                            <div class="p-6 text-white">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4">
+                                    <span class="text-2xl">🌊</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Marine Science IG</h3>
+                                <p class="text-gray-100 mb-4">Study marine ecosystems and ocean conservation.</p>
+                                <div class="space-y-2 mb-6 text-sm">
+                                    <p>📅 Meets: Weekly</p>
+                                    <p>👥 Members: 30+</p>
+                                    <p>📍 Location: Marine Lab</p>
+                                </div>
+                                <a href="success.html?cca=Marine%20Science%20IG" class="block w-full bg-cca-lime text-cca-dark-blue font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-200 text-center">
+                                    Join Club
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Info Section -->
+        <section class="py-20 bg-gradient-to-br from-gray-50 to-cca-light">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold text-cca-dark-blue mb-6">
+                    Join Your Perfect CCA Today
+                </h2>
+                <p class="text-gray-600 text-lg mb-8">
+                    With 47+ authentic Republic Polytechnic CCAs across Arts, Sports, and Academic Interest Groups, there's something for everyone. Join multiple clubs, make new friends, and explore your passions!
+                </p>
+                <a href="index.html" class="inline-block px-8 py-3 bg-cca-lime text-cca-dark-blue font-bold rounded-lg hover:bg-yellow-400 transition-all duration-200">
+                    ← Back to Home
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-cca-dark-blue text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">© 2025 CCA Connect. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Search Functionality Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('cca-search');
+            const clearButton = document.getElementById('clear-search');
+            const ccaCards = document.querySelectorAll('.grid > div'); // All CCA cards
+            const categorySections = document.querySelectorAll('.mb-16'); // Category sections
+
+            function filterCCAs() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                let visibleCategories = new Set();
+
+                ccaCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    const isVisible = title.includes(searchTerm) || description.includes(searchTerm);
+
+                    card.style.display = isVisible ? 'block' : 'none';
+
+                    // Track which categories have visible cards
+                    if (isVisible) {
+                        const categorySection = card.closest('.mb-16');
+                        if (categorySection) {
+                            visibleCategories.add(categorySection);
+                        }
+                    }
+                });
+
+                // Show/hide category sections based on whether they have visible cards
+                categorySections.forEach(section => {
+                    const hasVisibleCards = Array.from(section.querySelectorAll('.grid > div')).some(card =>
+                        card.style.display !== 'none'
+                    );
+                    section.style.display = hasVisibleCards ? 'block' : 'none';
+                });
+
+                // Show/hide clear button
+                clearButton.style.display = searchTerm ? 'flex' : 'none';
+
+                // Show "no results" message if no cards are visible
+                let noResultsMessage = document.getElementById('no-results');
+                if (!noResultsMessage) {
+                    noResultsMessage = document.createElement('div');
+                    noResultsMessage.id = 'no-results';
+                    noResultsMessage.className = 'text-center py-12';
+                    noResultsMessage.innerHTML = `
+                        <div class="max-w-md mx-auto">
+                            <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                            <h3 class="text-xl font-semibold text-gray-600 mb-2">No CCAs found</h3>
+                            <p class="text-gray-500">Try adjusting your search terms</p>
+                        </div>
+                    `;
+                    document.querySelector('section.py-20.bg-white > div').appendChild(noResultsMessage);
+                }
+
+                const hasVisibleCards = Array.from(ccaCards).some(card => card.style.display !== 'none');
+                noResultsMessage.style.display = hasVisibleCards ? 'none' : 'block';
+            }
+
+            function clearSearch() {
+                searchInput.value = '';
+                filterCCAs();
+                searchInput.focus();
+            }
+
+            // Add event listeners
+            searchInput.addEventListener('input', filterCCAs);
+            searchInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    filterCCAs();
+                }
+            });
+
+            // Clear search on escape or clear button click
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    clearSearch();
+                }
+            });
+
+            clearButton.addEventListener('click', clearSearch);
+
+            // Focus search input on page load for better UX
+            searchInput.focus();
+        });
+    </script>
+</body>
+</html>

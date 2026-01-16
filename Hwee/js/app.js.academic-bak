@@ -1,0 +1,591 @@
+/* ============================================================
+   StudyBuddy - Student Learning Companion App
+   Modern, engaging features for student success
+   ============================================================ */
+
+/* ===== AFFIRMATIONS ===== */
+const AFFIRMATIONS = [
+    'You are capable of amazing things.',
+    'Every study session brings you closer to your goals.',
+    'Your effort matters more than you realize.',
+    'Progress over perfection - you\'re doing great.',
+    'This challenge is helping you grow stronger.',
+    'You deserve to succeed and celebrate your wins.',
+    'Your potential is limitless.',
+    'You\'re learning and becoming the best version of you.',
+    'Small steps lead to big changes.',
+    'You\'ve got this! 💪',
+    'Your hard work will pay off.',
+    'Be kind to yourself - you\'re enough.',
+    'Success is a journey, not a destination.',
+    'You are stronger than you think.',
+    'Today is a new opportunity to shine.'
+];
+
+/* ===== STUDY HACKS / PRODUCTIVITY TIPS ===== */
+const STUDY_HACKS = [
+    { emoji: '⏱️', title: 'Pomodoro Technique', tip: 'Study for 25 mins, break for 5. Repeat 4x, then break 15-30 mins.' },
+    { emoji: '🧠', title: 'Active Recall', tip: 'Test yourself without notes. It strengthens memory way more than re-reading.' },
+    { emoji: '🗺️', title: 'Mind Mapping', tip: 'Draw connections between ideas. Visual learning sticks better!' },
+    { emoji: '🎵', title: 'Study Music', tip: 'Lo-fi beats or nature sounds can boost focus. Find what works for you.' },
+    { emoji: '✍️', title: 'Handwrite Notes', tip: 'Handwriting engages more brain regions than typing. Better retention!' },
+    { emoji: '💧', title: 'Stay Hydrated', tip: 'Drink water while studying. Your brain works 14% better when hydrated.' },
+    { emoji: '🏃', title: 'Move Your Body', tip: 'Take a 10-min walk between study sessions. Clears your mind & boosts energy.' },
+    { emoji: '🌙', title: 'Sleep is Key', tip: 'A good night\'s sleep cements learning. Don\'t sacrifice sleep for cramming!' },
+    { emoji: '👥', title: 'Study Groups', tip: 'Teach others what you\'ve learned. Teaching cements your own understanding.' },
+    { emoji: '📵', title: 'Phone Away', tip: 'Put your phone in another room during study sessions. Focus = productivity.' },
+    { emoji: '🎯', title: 'SMART Goals', tip: 'Set specific goals: "Master chapter 3" beats "study harder".' },
+    { emoji: '⛅', title: 'Study in Daylight', tip: 'Natural light boosts mood, focus, and productivity by up to 25%.' }
+];
+
+/* ===== MOOD TRACKER ===== */
+const MOOD_RESPONSES = {
+    energized: '🔥 Amazing! Channel this energy into your studies - you\'re in the zone!',
+    calm: '😌 Great mindset for focused studying. Use this peaceful state.',
+    neutral: '😐 You\'re steady. This is a good baseline for productive work.',
+    stressed: '😰 Stress is normal. Try a coping strategy or take a brief break. You\'ve got this.',
+    overwhelmed: '😭 It\'s okay to feel this way. Try breaking tasks into smaller steps. Reach out if needed.'
+};
+
+const MOOD_VALUES = { energized: 5, calm: 5, neutral: 3, stressed: 2, overwhelmed: 1 };
+
+/* ===== GAMIFIED ACHIEVEMENTS ===== */
+const ACHIEVEMENTS = [
+    { id: 'first_check_in', name: 'First Check-in', emoji: '🌟', condition: 'mood_checked_1' },
+    { id: 'mood_tracker', name: 'Mood Tracker', emoji: '📊', condition: 'mood_checked_5' },
+    { id: 'study_buddy', name: 'Study Buddy', emoji: '🎓', condition: 'opened_chat_1' },
+    { id: 'event_planner', name: 'Event Planner', emoji: '📅', condition: 'event_added_1' },
+    { id: 'wellness_warrior', name: 'Wellness Warrior', emoji: '💪', condition: 'coping_clicked_3' },
+    { id: 'hack_master', name: 'Hack Master', emoji: '⚡', condition: 'hack_viewed_5' },
+    { id: 'consistency_king', name: 'Consistency King', emoji: '👑', condition: 'days_visited_7' },
+    { id: 'motivation_master', name: 'Motivation Master', emoji: '🚀', condition: 'affirmation_viewed_10' },
+    { id: 'time_manager', name: 'Time Manager', emoji: '⏰', condition: 'event_added_5' },
+    { id: 'legend', name: 'Legend Status', emoji: '🏆', condition: 'all_badges_earned' }
+];
+
+/* ===== COPING STRATEGIES ===== */
+const COPING_STRATEGIES = [
+    { name: '4-7-8 Breathing', emoji: '🌬️', desc: 'In for 4, hold for 7, out for 8' },
+    { name: '5-4-3-2-1 Grounding', emoji: '🌍', desc: 'Name things you sense' },
+    { name: 'Progressive Relax', emoji: '😌', desc: 'Tense & release muscles' },
+    { name: 'Journaling', emoji: '📝', desc: 'Write your thoughts freely' },
+    { name: 'Movement', emoji: '🚶', desc: 'Walk, stretch, or dance' },
+    { name: 'Fresh Air', emoji: '🌿', desc: 'Go outside for a breath' },
+    { name: 'Cold Water', emoji: '🧊', desc: 'Splash on your face' },
+    { name: 'Happy Playlist', emoji: '🎵', desc: 'Play uplifting music' }
+];
+
+/* ===== DOM REFERENCES ===== */
+const themeToggle = document.getElementById('themeToggle');
+const navToggle = document.getElementById('navToggle');
+const siteNav = document.querySelector('.site-nav');
+const dailyAffirmation = document.getElementById('dailyAffirmation');
+const nextAffirmation = document.getElementById('nextAffirmation');
+const moodOptions = document.getElementById('moodOptions');
+const moodMessage = document.getElementById('moodMessage');
+const toastContainer = document.getElementById('toastContainer');
+const openChatBtn = document.getElementById('openChatBtn');
+const chatbotWidget = document.getElementById('chatbotWidget');
+const chatbotToggle = document.getElementById('chatbotToggle');
+const chatbotContent = document.querySelector('.chatbot-content');
+const closeChatbot = document.getElementById('closeChatbot');
+const chatInput = document.getElementById('chatInput');
+const sendChatBtn = document.getElementById('sendChatBtn');
+const chatMessages = document.getElementById('chatMessages');
+
+/* ===== TOAST NOTIFICATIONS ===== */
+function showToast(message, opts = {}) {
+    const ttl = opts.ttl || 3000;
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    const msg = document.createElement('div');
+    msg.className = 'msg';
+    msg.textContent = message;
+    toast.appendChild(msg);
+    const close = document.createElement('button');
+    close.className = 'close';
+    close.innerHTML = '✕';
+    close.addEventListener('click', () => toast.remove());
+    toast.appendChild(close);
+    toastContainer.appendChild(toast);
+    if (ttl > 0) setTimeout(() => { try { toast.remove(); } catch (e) { } }, ttl);
+    return toast;
+}
+
+/* ===== THEME MANAGEMENT ===== */
+function saveTheme(t) { try { localStorage.setItem('studybuddy:theme', t); } catch (e) { } }
+function loadTheme() { try { return localStorage.getItem('studybuddy:theme'); } catch (e) { return null } }
+function applyTheme(t) {
+    const on = t === 'dark';
+    document.documentElement.classList.toggle('dark', on);
+    if (themeToggle) themeToggle.setAttribute('aria-pressed', String(on));
+}
+if (themeToggle) {
+    const saved = loadTheme();
+    applyTheme(saved || 'light');
+    themeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        saveTheme(isDark ? 'dark' : 'light');
+        themeToggle.setAttribute('aria-pressed', String(isDark));
+    });
+}
+
+/* ===== MOBILE NAV ===== */
+if (navToggle && siteNav) {
+    navToggle.addEventListener('click', () => {
+        const open = siteNav.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(open));
+    });
+    siteNav.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            siteNav.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            siteNav.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+}
+
+/* ===== AFFIRMATION FEATURE ===== */
+let currentAffirmationIndex = 0;
+function updateAffirmation() {
+    if (dailyAffirmation) {
+        dailyAffirmation.textContent = AFFIRMATIONS[currentAffirmationIndex];
+        trackAchievement('affirmation_viewed_10');
+    }
+}
+if (nextAffirmation) {
+    nextAffirmation.addEventListener('click', () => {
+        currentAffirmationIndex = (currentAffirmationIndex + 1) % AFFIRMATIONS.length;
+        updateAffirmation();
+    });
+    updateAffirmation();
+}
+
+/* ===== MOOD TRACKER ===== */
+function saveMood(mood) { try { localStorage.setItem('studybuddy:mood', mood); } catch (e) { } }
+function loadMood() { try { return localStorage.getItem('studybuddy:mood'); } catch (e) { return null } }
+function setSelected(button) {
+    Array.from(moodOptions.querySelectorAll('.mood')).forEach(b => {
+        b.classList.remove('selected');
+        b.setAttribute('aria-pressed', 'false');
+    });
+    if (button) {
+        button.classList.add('selected');
+        button.setAttribute('aria-pressed', 'true');
+    }
+}
+function renderMoodMessage(mood) {
+    const text = MOOD_RESPONSES[mood] || '';
+    moodMessage.textContent = text;
+}
+if (moodOptions) {
+    moodOptions.addEventListener('click', (e) => {
+        const btn = e.target.closest('.mood');
+        if (!btn) return;
+        const mood = btn.dataset.mood;
+        setSelected(btn);
+        renderMoodMessage(mood);
+        saveMood(mood);
+        updateMoodChart();
+        trackAchievement('mood_checked_1');
+        trackAchievement('mood_checked_5');
+    });
+
+    moodOptions.addEventListener('keydown', (e) => {
+        const focused = document.activeElement;
+        if (!focused.classList || !focused.classList.contains('mood')) return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            const next = focused.nextElementSibling || moodOptions.firstElementChild;
+            next.focus();
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prev = focused.previousElementSibling || moodOptions.lastElementChild;
+            prev.focus();
+        } else if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            focused.click();
+        }
+    });
+
+    const prev = loadMood();
+    if (prev) {
+        const btn = moodOptions.querySelector(`.mood[data-mood="${prev}"]`);
+        if (btn) {
+            setSelected(btn);
+            renderMoodMessage(prev);
+        }
+    }
+}
+
+/* ===== STUDY HACKS FEATURE ===== */
+const studyHacksContainer = document.getElementById('studyHacksContainer');
+const getRandomHack = document.getElementById('getRandomHack');
+if (studyHacksContainer) {
+    STUDY_HACKS.forEach(hack => {
+        const card = document.createElement('div');
+        card.className = 'hack-card';
+        card.innerHTML = `<div class="hack-icon">${hack.emoji}</div><div class="hack-title">${hack.title}</div>`;
+        card.addEventListener('click', () => {
+            showToast(`${hack.emoji} ${hack.title}: ${hack.tip}`, { ttl: 6000 });
+            trackAchievement('hack_viewed_5');
+        });
+        studyHacksContainer.appendChild(card);
+    });
+}
+if (getRandomHack) {
+    getRandomHack.addEventListener('click', () => {
+        const hack = STUDY_HACKS[Math.floor(Math.random() * STUDY_HACKS.length)];
+        showToast(`${hack.emoji} ${hack.title}: ${hack.tip}`, { ttl: 6000 });
+        trackAchievement('hack_viewed_5');
+    });
+}
+
+/* ===== MOOD CHART / PROGRESS TRACKER ===== */
+function getMoodData() {
+    try {
+        const data = localStorage.getItem('studybuddy:moodData');
+        return data ? JSON.parse(data) : {};
+    } catch (e) {
+        return {};
+    }
+}
+function saveMoodData(data) {
+    try {
+        localStorage.setItem('studybuddy:moodData', JSON.stringify(data));
+    } catch (e) { }
+}
+function updateMoodChart() {
+    const moodChart = document.getElementById('moodChart');
+    const moodStats = document.getElementById('moodStats');
+    if (!moodChart || !moodStats) return;
+
+    const data = getMoodData();
+    const today = new Date();
+    const week = [];
+    let totalMood = 0;
+    let count = 0;
+
+    for (let i = 6; i >= 0; i--) {
+        const date = new Date(today);
+        date.setDate(date.getDate() - i);
+        const key = date.toISOString().split('T')[0];
+        const mood = data[key] || 0;
+        week.push({ date: key, mood: mood, label: date.toLocaleDateString('en', { weekday: 'short' }) });
+        if (mood > 0) {
+            totalMood += mood;
+            count++;
+        }
+    }
+
+    moodChart.innerHTML = week.map(day => {
+        const height = (day.mood / 5) * 60 + 'px';
+        const color = day.mood === 0 ? '#e2e8f0' : day.mood >= 4 ? '#10b981' : day.mood >= 3 ? '#3b82f6' : day.mood >= 2 ? '#f59e0b' : '#ef4444';
+        return `<div class="mood-day"><div class="mood-bar" style="background: ${color}; height: ${height}" title="${day.mood > 0 ? 'Mood: ' + day.mood + '/5' : 'No entry'}"></div><div class="mood-day-label">${day.label}</div></div>`;
+    }).join('');
+
+    const avgMood = count > 0 ? (totalMood / count).toFixed(1) : 'No data';
+    moodStats.innerHTML = `
+        <div class="stat-item">
+            <div class="stat-value">${count}</div>
+            <div class="stat-label">Entries This Week</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">${avgMood}</div>
+            <div class="stat-label">Average Mood</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">${count > 0 ? week.filter(d => d.mood > 0).length : 0}</div>
+            <div class="stat-label">Days Tracked</div>
+        </div>
+    `;
+}
+if (moodOptions) {
+    const originalSetSelected = setSelected;
+    setSelected = function (button) {
+        originalSetSelected(button);
+        if (button) {
+            const mood = button.dataset.mood;
+            const today = new Date().toISOString().split('T')[0];
+            const data = getMoodData();
+            data[today] = MOOD_VALUES[mood] || 3;
+            saveMoodData(data);
+            updateMoodChart();
+        }
+    };
+}
+updateMoodChart();
+
+/* ===== COPING STRATEGIES ===== */
+const copingStrategies = document.getElementById('copingStrategies');
+if (copingStrategies) {
+    COPING_STRATEGIES.forEach(strategy => {
+        const div = document.createElement('div');
+        div.className = 'coping-item';
+        div.innerHTML = `<div class="coping-icon">${strategy.emoji}</div><div class="coping-name">${strategy.name}</div><div class="coping-description">${strategy.desc}</div>`;
+        div.addEventListener('click', () => {
+            showToast(`✨ Try: ${strategy.name} - ${strategy.desc}`, { ttl: 5000 });
+            trackAchievement('coping_clicked_3');
+        });
+        copingStrategies.appendChild(div);
+    });
+}
+
+/* ===== EVENT CALENDAR REMINDERS ===== */
+function getEvents() {
+    try {
+        const data = localStorage.getItem('studybuddy:events');
+        return data ? JSON.parse(data) : [];
+    } catch (e) {
+        return [];
+    }
+}
+function saveEvents(events) {
+    try {
+        localStorage.setItem('studybuddy:events', JSON.stringify(events));
+    } catch (e) { }
+}
+function renderEvents() {
+    const eventsList = document.getElementById('eventsList');
+    if (!eventsList) return;
+    const events = getEvents();
+    eventsList.innerHTML = '';
+    if (events.length === 0) {
+        eventsList.innerHTML = '<p class="muted">No events yet. Add one to get started!</p>';
+        return;
+    }
+    events.sort((a, b) => new Date(a.date) - new Date(b.date)).forEach((event, idx) => {
+        const item = document.createElement('div');
+        item.className = 'event-item';
+        const date = new Date(event.date);
+        const dateStr = date.toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric' });
+        const daysUntil = Math.ceil((date - new Date()) / (1000 * 60 * 60 * 24));
+        const timeStr = daysUntil < 0 ? `${Math.abs(daysUntil)} days ago` : daysUntil === 0 ? 'Today!' : `In ${daysUntil} days`;
+        item.innerHTML = `
+            <div>
+                <div class="event-name">${event.name}</div>
+                <div class="event-date">${dateStr} • ${timeStr}</div>
+            </div>
+            <button class="event-delete" aria-label="Delete event">✕</button>
+        `;
+        item.querySelector('.event-delete').addEventListener('click', () => {
+            events.splice(idx, 1);
+            saveEvents(events);
+            renderEvents();
+            showToast('Event deleted', { ttl: 2500 });
+        });
+        eventsList.appendChild(item);
+    });
+}
+const eventForm = document.getElementById('eventForm');
+if (eventForm) {
+    eventForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('eventName').value.trim();
+        const date = document.getElementById('eventDate').value;
+        if (!name || !date) {
+            showToast('Please fill in all fields', { ttl: 2500 });
+            return;
+        }
+        const events = getEvents();
+        events.push({ name, date, when: new Date().toISOString() });
+        saveEvents(events);
+        document.getElementById('eventName').value = '';
+        document.getElementById('eventDate').value = '';
+        renderEvents();
+        showToast('📅 Event added!', { ttl: 3000 });
+        trackAchievement('event_added_1');
+        trackAchievement('event_added_5');
+    });
+}
+renderEvents();
+
+/* ===== GAMIFIED ACHIEVEMENTS ===== */
+function getAchievements() {
+    try {
+        const data = localStorage.getItem('studybuddy:achievements');
+        return data ? JSON.parse(data) : {};
+    } catch (e) {
+        return {};
+    }
+}
+function saveAchievements(data) {
+    try {
+        localStorage.setItem('studybuddy:achievements', JSON.stringify(data));
+    } catch (e) { }
+}
+function trackAchievement(condition) {
+    const achievements = getAchievements();
+    for (const achievement of ACHIEVEMENTS) {
+        if (achievement.condition === condition && !achievements[achievement.id]) {
+            achievements[achievement.id] = { unlocked: true, when: new Date().toISOString() };
+            saveAchievements(achievements);
+            renderBadges();
+            showToast(`🎉 Badge Unlocked: ${achievement.name} ${achievement.emoji}`, { ttl: 4000 });
+            return;
+        }
+    }
+}
+function renderBadges() {
+    const badgesContainer = document.getElementById('badgesContainer');
+    const achieveCount = document.getElementById('achieveCount');
+    if (!badgesContainer) return;
+    const achievements = getAchievements();
+    badgesContainer.innerHTML = '';
+    let unlockedCount = 0;
+    ACHIEVEMENTS.forEach(achievement => {
+        const badge = document.createElement('div');
+        badge.className = 'badge';
+        if (achievements[achievement.id]) {
+            badge.classList.add('unlocked');
+            unlockedCount++;
+        }
+        badge.textContent = achievement.emoji;
+        badge.title = achievement.name;
+        badgesContainer.appendChild(badge);
+    });
+    if (achieveCount) achieveCount.textContent = unlockedCount;
+}
+renderBadges();
+
+/* ===== FLOWISE CHATBOT INTEGRATION ===== */
+document.addEventListener('DOMContentLoaded', function () {
+    if (chatbotToggle && chatbotContent) {
+        // Open by default for better engagement
+        setTimeout(() => {
+            chatbotContent.classList.add('active');
+            chatbotToggle.classList.add('hidden');
+            chatInput.focus();
+        }, 800);
+
+        chatbotToggle.addEventListener('click', function () {
+            chatbotContent.classList.toggle('active');
+            chatbotToggle.classList.toggle('hidden');
+            if (chatbotContent.classList.contains('active')) {
+                chatInput.focus();
+                trackAchievement('opened_chat_1');
+            }
+        });
+
+        closeChatbot.addEventListener('click', function () {
+            chatbotContent.classList.remove('active');
+            chatbotToggle.classList.remove('hidden');
+        });
+
+        openChatBtn.addEventListener('click', function () {
+            chatbotContent.classList.add('active');
+            chatbotToggle.classList.add('hidden');
+            chatInput.focus();
+            trackAchievement('opened_chat_1');
+        });
+
+        sendChatBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        async function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            addMessageToChat(message, 'user');
+            chatInput.value = '';
+
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'chat-message bot';
+            typingDiv.innerHTML = '<div class="message-bubble bot">Thinking...</div>';
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            try {
+                const response = await window.queryFlowise(message);
+                typingDiv.remove();
+
+                let botMessage = '';
+                if (response.text) {
+                    botMessage = response.text;
+                } else if (response.message) {
+                    botMessage = response.message;
+                } else if (response.answer) {
+                    botMessage = response.answer;
+                } else if (typeof response === 'string') {
+                    botMessage = response;
+                } else if (response.error) {
+                    botMessage = `Error: ${response.error}`;
+                } else {
+                    botMessage = JSON.stringify(response);
+                }
+
+                if (botMessage) {
+                    addMessageToChat(botMessage, 'bot');
+                } else {
+                    addMessageToChat('I received your message but didn\'t get a response.', 'bot');
+                }
+            } catch (error) {
+                typingDiv.remove();
+                console.error('Chat error:', error);
+                addMessageToChat(`I'm having trouble connecting. Try again in a moment!`, 'bot');
+            }
+        }
+
+        function addMessageToChat(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${sender}`;
+            messageDiv.innerHTML = `<div class="message-bubble ${sender}">${escapeHtml(text)}</div>`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    }
+});
+
+/* ===== VISIT TRACKING FOR CONSISTENCY ACHIEVEMENT ===== */
+function trackVisit() {
+    const today = new Date().toISOString().split('T')[0];
+    const visitKey = 'studybuddy:last_visit';
+    const visitsKey = 'studybuddy:visits';
+    try {
+        const lastVisit = localStorage.getItem(visitKey);
+        let visits = JSON.parse(localStorage.getItem(visitsKey) || '[]');
+
+        if (lastVisit !== today) {
+            visits.push(today);
+            localStorage.setItem(visitKey, today);
+            localStorage.setItem(visitsKey, JSON.stringify(visits));
+
+            // Check for 7-day achievement
+            if (visits.length >= 7) {
+                trackAchievement('days_visited_7');
+            }
+        }
+    } catch (e) { }
+}
+trackVisit();
+
+/* ===== GLOBAL API EXPOSURE ===== */
+window.StudyBuddy = {
+    AFFIRMATIONS,
+    STUDY_HACKS,
+    MOOD_RESPONSES,
+    COPING_STRATEGIES,
+    ACHIEVEMENTS,
+    showToast,
+    trackAchievement,
+    updateMoodChart,
+    renderEvents,
+    renderBadges,
+    updateAffirmation
+};

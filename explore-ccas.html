@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore CCAs - CampusConnect Portal</title>
-  <link rel="stylesheet" href="./styles/portal.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore CCAs - CampusConnect Portal</title>
+    <link rel="stylesheet" href="./styles/portal.css">
 </head>
-<body>
-  <!-- Navigation Bar -->
-  <nav>
-    <div class="navbar-container">
-      <div class="navbar-left">Republic Polytechnic</div>
-      <div class="navbar-center">Explore CCAs</div>
-      <div class="navbar-right">
-        <a href="./index.html" class="back-button">← Back to Portal</a>
-      </div>
+<body class="wrapper-body">
+    <!-- Sticky Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-left">
+                <span class="navbar-brand">Republic Polytechnic</span>
+            </div>
+            <div class="navbar-center">
+                <span class="navbar-title">Explore CCAs</span>
+            </div>
+            <div class="navbar-right">
+                <a href="./index.html" class="back-button">← Back to Portal</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Info Tip -->
+    <div class="info-tip">
+        💡 Tip: Use the Back button to return to the portal.
     </div>
-  </nav>
 
-  <!-- Tip Section -->
-  <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
-    <div class="tip-section">
-      <strong>Tip:</strong> Use the Back button to return to the portal.
+    <!-- Iframe Container -->
+    <div class="iframe-container">
+        <iframe 
+            src="./Lucas/index.html" 
+            title="Explore CCAs Service"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
     </div>
-  </div>
 
-  <!-- Iframe Container -->
-  <iframe
-    src="./Lucas/C240%20Proj/index.html"
-    class="iframe-wrapper"
-    title="Explore CCAs"
-  ></iframe>
-
-  <script src="./scripts/portal.js"></script>
+    <script src="./scripts/portal.js"></script>
 </body>
 </html>

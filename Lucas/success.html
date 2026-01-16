@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Successfully joined a CCA!">
+    <title>Join Successful - CCA Connect</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cca-dark-blue': '#0f172a',
+                        'cca-blue': '#1e3a8a',
+                        'cca-light-blue': '#3b82f6',
+                        'cca-lime': '#84cc16',
+                        'cca-purple': '#a855f7',
+                        'cca-light': '#f8fafc',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                scroll-behavior: auto;
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+        
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid #a855f7;
+            outline-offset: 2px;
+        }
+        
+        @keyframes bounce-in {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(20px);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .bounce-in {
+            animation: bounce-in 0.6s ease-out;
+        }
+        
+        @keyframes confetti {
+            0% {
+                transform: translateY(-100%) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        .confetti {
+            animation: confetti 3s ease-in forwards;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-cca-lime to-green-300 text-gray-900 font-sans min-h-screen flex items-center justify-center">
+    <!-- Confetti Elements -->
+    <div id="confetti-container"></div>
+    
+    <!-- Main Content -->
+    <main id="main-content" role="main" class="w-full px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto">
+            <!-- Success Card -->
+            <div class="bg-white rounded-2xl shadow-2xl p-8 sm:p-12 text-center bounce-in">
+                <!-- Success Icon -->
+                <div class="flex justify-center mb-8">
+                    <div class="relative">
+                        <div class="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-cca-lime to-green-500 rounded-full flex items-center justify-center animate-pulse">
+                            <svg class="w-12 h-12 sm:w-14 sm:h-14 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Success Message -->
+                <h1 class="text-4xl sm:text-5xl font-bold text-cca-dark-blue mb-4">
+                    🎉 Welcome!
+                </h1>
+                
+                <p class="text-xl text-gray-700 mb-6">
+                    You've successfully joined
+                </p>
+                
+                <div class="bg-gradient-to-r from-cca-light-blue to-cca-purple rounded-xl p-6 mb-8">
+                    <h2 id="cca-name" class="text-3xl sm:text-4xl font-bold text-white">
+                        [CCA Name]
+                    </h2>
+                </div>
+                
+                <!-- Details Card -->
+                <div class="bg-gray-50 rounded-xl p-6 mb-8 text-left">
+                    <h3 class="text-lg font-bold text-cca-dark-blue mb-4">What's Next?</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-cca-lime mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Check your email for meeting details and updates</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-cca-lime mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Join our Discord server to connect with members</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-cca-lime mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Attend the next meeting to meet your fellow members!</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="ccas.html" class="px-8 py-3 bg-cca-purple text-white font-bold rounded-lg hover:bg-pink-600 transition-all duration-200 text-center">
+                        Join Another CCA
+                    </a>
+                    <a href="index.html" class="px-8 py-3 bg-cca-dark-blue text-white font-bold rounded-lg hover:bg-blue-900 transition-all duration-200 text-center">
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Get parameters from URL
+        const params = new URLSearchParams(window.location.search);
+        const type = params.get('type') || 'cca';
+        const name = params.get('cca') || params.get('name') || 'Your CCA';
+        
+        // Update content based on type
+        const ccaNameElement = document.getElementById('cca-name');
+        const successMessage = document.querySelector('p.text-xl');
+        const pageTitle = document.querySelector('title');
+        
+        if (type === 'session') {
+            ccaNameElement.textContent = decodeURIComponent(name);
+            successMessage.textContent = "You've successfully joined the session";
+            pageTitle.textContent = "Session Joined - CCA Connect";
+            document.querySelector('h1').textContent = "🎉 You're In!";
+        } else {
+            ccaNameElement.textContent = decodeURIComponent(name);
+            successMessage.textContent = "You've successfully joined";
+            pageTitle.textContent = "Join Successful - CCA Connect";
+            document.querySelector('h1').textContent = "🎉 Welcome!";
+        }
+        
+        // Confetti animation
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti-container');
+            const confettiPieces = 50;
+            const colors = ['#84cc16', '#a855f7', '#3b82f6', '#ff6b6b', '#ffd93d'];
+            
+            for (let i = 0; i < confettiPieces; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti fixed pointer-events-none';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                confetti.style.height = confetti.style.width;
+                confetti.style.borderRadius = '50%';
+                confetti.style.opacity = '1';
+                confetti.style.animationDelay = (Math.random() * 0.5) + 's';
+                
+                confettiContainer.appendChild(confetti);
+            }
+        }
+        
+        // Trigger confetti on load
+        window.addEventListener('load', createConfetti);
+    </script>
+</body>
+</html>

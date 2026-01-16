@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>About StudyBuddy — Your AI Learning Companion</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <h1 class="site-title"><a href="index.html">🎓 StudyBuddy</a></h1>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="resources.html">Study Guides</a>
+                <a href="about.html">About</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggle" class="btn" aria-pressed="false">Dark</button>
+                <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container main">
+        <section class="hero">
+            <h2>About StudyBuddy 🎓</h2>
+            <p class="lead">Your personal AI learning companion designed to help you succeed academically and thrive
+                personally.</p>
+        </section>
+
+        <section class="card">
+            <h3>Our Mission</h3>
+            <p>StudyBuddy exists to support student success through personalized AI assistance, mood tracking,
+                productivity tools, and gamified achievements. We believe that learning should be engaging, supportive,
+                and fun.</p>
+        </section>
+
+        <div class="grid">
+            <div class="col main-col">
+                <section class="card">
+                    <h3>Key Features</h3>
+                    <ul style="list-style: disc; padding-left: 20px; line-height: 1.8;">
+                        <li><strong>AI Chatbot:</strong> 24/7 instant answers to your questions on any subject</li>
+                        <li><strong>Mood Tracker:</strong> Monitor your emotional wellbeing with visual progress charts
+                        </li>
+                        <li><strong>Study Hacks:</strong> Science-backed productivity tips to boost your learning</li>
+                        <li><strong>Event Calendar:</strong> Never miss a deadline or important date again</li>
+                        <li><strong>Gamified Achievements:</strong> Unlock badges and celebrate your progress</li>
+                        <li><strong>Coping Strategies:</strong> Quick techniques for managing stress and anxiety</li>
+                        <li><strong>Daily Motivation:</strong> Personalized affirmations to keep you inspired</li>
+                        <li><strong>Dark Mode:</strong> Easy on your eyes during late-night study sessions</li>
+                    </ul>
+                </section>
+
+                <section class="card">
+                    <h3>Why StudyBuddy?</h3>
+                    <p><strong>Student-Centered Design:</strong> Every feature is built with your needs in mind. We've
+                        listened to students like you and created tools that actually help.</p>
+                    <p><strong>Privacy First:</strong> All your data stays local on your device. No tracking, no
+                        sharing, no ads.</p>
+                    <p><strong>Always Available:</strong> Your AI tutor and wellness companion are there 24/7, whenever
+                        you need support.</p>
+                    <p><strong>Holistic Support:</strong> We care about your academic success AND your mental health.
+                        Both matter equally.</p>
+                </section>
+
+                <section class="card">
+                    <h3>The Science Behind StudyBuddy</h3>
+                    <p>Our study hacks and coping strategies are based on real cognitive science and psychology
+                        research:</p>
+                    <ul style="list-style: disc; padding-left: 20px; line-height: 1.8;">
+                        <li><strong>Pomodoro Technique:</strong> Proven to increase focus and reduce burnout</li>
+                        <li><strong>Active Recall:</strong> Strengthens memory formation better than re-reading</li>
+                        <li><strong>Mood Tracking:</strong> Increases self-awareness and emotional regulation</li>
+                        <li><strong>Gamification:</strong> Unlocking badges triggers dopamine release, motivating
+                            continued engagement</li>
+                        <li><strong>Coping Strategies:</strong> Evidence-based techniques from cognitive-behavioral
+                            therapy</li>
+                    </ul>
+                </section>
+            </div>
+
+            <aside class="col side-col">
+                <section class="card crisis-support">
+                    <h3>Remember: You're Not Alone</h3>
+                    <p>While StudyBuddy is here to support you, remember that professional support is available 24/7:
+                    </p>
+                    <ul class="crisis-links">
+                        <li><strong>Crisis Hotline:</strong> <a href="tel:988">988</a> (call or text)</li>
+                        <li><strong>Crisis Text:</strong> Text HOME to 741741</li>
+                        <li><strong>Emergency:</strong> <a href="tel:911">911</a></li>
+                    </ul>
+                    <p style="font-size: 0.9rem; margin-top: 16px;">Your wellbeing is our top priority. Reach out if you
+                        need help. 💚</p>
+                </section>
+
+                <section class="card">
+                    <h3>For Questions?</h3>
+                    <p>Have ideas for features? Found a bug? Want to share feedback?</p>
+                    <p>Use the <strong>AI chatbot</strong> to share your thoughts - we read all feedback and
+                        continuously improve StudyBuddy based on what students like you tell us.</p>
+                </section>
+            </aside>
+        </div>
+    </main>
+
+    <script src="js/app.js" defer></script>
+
+    <!-- Toast notifications -->
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Chatbot Widget HTML -->
+    <div id="chatbotWidget" class="chatbot-widget">
+        <div id="chatbotContent" class="chatbot-content">
+            <div class="chatbot-header">
+                <h3>StudyBuddy AI</h3>
+                <button id="closeChatbot" class="chatbot-close" aria-label="Close chat">✕</button>
+            </div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <div class="chat-input-area">
+                <input id="chatInput" type="text" class="chat-input" placeholder="Ask me anything..."
+                    aria-label="Chat message input">
+                <button id="sendChatBtn" class="chat-send" aria-label="Send message">➤</button>
+            </div>
+        </div>
+        <button id="chatbotToggle" class="chatbot-toggle" aria-label="Open chat">💬</button>
+    </div>
+
+    <!-- Flowise API Integration -->
+    <script>
+        const FLOWISE_CONFIG = {
+            apiHost: "https://cloud.flowiseai.com",
+            chatflowId: "a7d8418d-c0f1-4750-a927-2e7107d173a3",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+
+        async function queryFlowise(question) {
+            try {
+                const response = await fetch(
+                    `${FLOWISE_CONFIG.apiHost}/api/v1/prediction/${FLOWISE_CONFIG.chatflowId}`,
+                    {
+                        method: "POST",
+                        headers: FLOWISE_CONFIG.headers,
+                        body: JSON.stringify({
+                            question: question
+                        })
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                return result;
+            } catch (error) {
+                console.error("Flowise Query Error:", error);
+                return { error: error.message };
+            }
+        }
+
+        window.queryFlowise = queryFlowise;
+    </script>
+</body>
+
+</html>

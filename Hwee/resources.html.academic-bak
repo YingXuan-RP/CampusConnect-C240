@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Study Guides & Resources — StudyBuddy</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <h1 class="site-title"><a href="index.html">🎓 StudyBuddy</a></h1>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="resources.html">Study Guides</a>
+                <a href="about.html">About</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggle" class="btn" aria-pressed="false">Dark</button>
+                <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container main">
+        <section class="hero">
+            <h2>Study Guides & Resources 📚</h2>
+            <p class="lead">Curated study materials and learning strategies to help you succeed in your courses.</p>
+        </section>
+
+        <div class="grid">
+            <div class="col main-col">
+                <section class="card">
+                    <h3>📖 Effective Study Strategies</h3>
+                    <p>Master these proven techniques to boost your academic performance:</p>
+
+                    <div style="margin-top: 20px;">
+                        <h4>1. The Feynman Technique</h4>
+                        <p><strong>How it works:</strong> Choose a topic → Explain it in simple terms as if teaching a
+                            5-year-old → Find gaps in your understanding → Simplify and refine.</p>
+                        <p><strong>Why it works:</strong> Identifying what you DON'T know is the first step to learning
+                            it. This technique surfaces gaps quickly.</p>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <h4>2. Spaced Repetition</h4>
+                        <p><strong>How it works:</strong> Review material at increasing intervals (1 day, 3 days, 7
+                            days, 14 days, 30 days).</p>
+                        <p><strong>Why it works:</strong> Fighting the "forgetting curve" - reviewing just as you're
+                            about to forget maximizes retention.</p>
+                        <p style="color: #666; font-size: 0.9rem;">💡 Apps like Anki automate spaced repetition with
+                            flashcards.</p>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <h4>3. Active Learning (Not Passive)</h4>
+                        <p><strong>Active: ❌</strong> Highlighting, re-reading, passive note-taking</p>
+                        <p><strong>Passive: ✅</strong> Self-testing, practice problems, teaching others, creating mind
+                            maps</p>
+                        <p><strong>Why it works:</strong> Your brain retains 90% of what you DO, but only 10% of what
+                            you READ.</p>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <h4>4. Interleaving</h4>
+                        <p><strong>How it works:</strong> Mix different topics/problem types during study instead of
+                            blocking (all topic A, then all topic B).</p>
+                        <p><strong>Why it works:</strong> Your brain learns to discriminate between concepts and chooses
+                            the right strategy faster.</p>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h3>⚡ Quick Reference: Study Session Blueprint</h3>
+                    <p>Use this structure for your study sessions:</p>
+                    <div style="background: #f0f9ff; padding: 16px; border-radius: 8px; margin-top: 12px;">
+                        <p style="margin: 8px 0;"><strong>0-5 min: Warm-up</strong> - Review notes from last session</p>
+                        <p style="margin: 8px 0;"><strong>5-30 min: Deep work</strong> - Focused learning (Pomodoro 25
+                            min block)</p>
+                        <p style="margin: 8px 0;"><strong>30-35 min: Break</strong> - Walk, water, fresh air</p>
+                        <p style="margin: 8px 0;"><strong>35-60 min: Practice</strong> - Problems, flashcards, practice
+                            tests</p>
+                        <p style="margin: 8px 0;"><strong>60-65 min: Review</strong> - Summarize key points, plan next
+                            session</p>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h3>📝 Exam Preparation Checklist</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+                            <input type="checkbox"> <strong>2 weeks before:</strong> Review syllabus & grading breakdown
+                        </li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+                            <input type="checkbox"> <strong>1 week before:</strong> Create study guide with key concepts
+                        </li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+                            <input type="checkbox"> <strong>3 days before:</strong> Do practice problems from exams
+                        </li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+                            <input type="checkbox"> <strong>Day before:</strong> Light review only, get good sleep
+                        </li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+                            <input type="checkbox"> <strong>Exam day:</strong> Eat breakfast, arrive early, take deep
+                            breaths
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="card">
+                    <h3>🎯 Time Management Basics</h3>
+                    <h4>The 80/20 Rule (Pareto Principle)</h4>
+                    <p>80% of your results come from 20% of your effort. Identify the high-impact activities:</p>
+                    <ul style="list-style: disc; padding-left: 20px;">
+                        <li>📌 Core concepts (not side details)</li>
+                        <li>📌 Practice problems (not just reading)</li>
+                        <li>📌 Past exams (signal highest-priority content)</li>
+                    </ul>
+
+                    <h4 style="margin-top: 20px;">Time Blocking Template</h4>
+                    <div style="background: #fff8f0; padding: 16px; border-radius: 8px; margin-top: 12px;">
+                        <p style="margin: 6px 0;"><strong>6-8 AM:</strong> Morning routine + one priority task</p>
+                        <p style="margin: 6px 0;"><strong>8 AM-12 PM:</strong> Classes / lectures</p>
+                        <p style="margin: 6px 0;"><strong>12-1 PM:</strong> Lunch + rest</p>
+                        <p style="margin: 6px 0;"><strong>1-3 PM:</strong> Active review from morning class</p>
+                        <p style="margin: 6px 0;"><strong>3-4 PM:</strong> Break / exercise</p>
+                        <p style="margin: 6px 0;"><strong>4-6 PM:</strong> Hard homework / problem sets</p>
+                        <p style="margin: 6px 0;"><strong>6 PM+:</strong> Dinner, personal time, relax</p>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="col side-col">
+                <section class="card">
+                    <h3>🧠 Memory Hacks</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 12px 0; border-bottom: 1px solid #eee;">
+                            <strong>Mnemonics:</strong> Create acronyms (ROY G BIV for colors)
+                        </li>
+                        <li style="padding: 12px 0; border-bottom: 1px solid #eee;">
+                            <strong>Method of Loci:</strong> Imagine walking through a familiar place, placing memories
+                            at locations
+                        </li>
+                        <li style="padding: 12px 0; border-bottom: 1px solid #eee;">
+                            <strong>Chunking:</strong> Break large info into smaller, memorable pieces
+                        </li>
+                        <li style="padding: 12px 0; border-bottom: 1px solid #eee;">
+                            <strong>Association:</strong> Link new info to things you already know
+                        </li>
+                        <li style="padding: 12px 0;">
+                            <strong>Teach It Back:</strong> Explain to a friend without notes
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="card">
+                    <h3>🏆 Study Tools You'll Love</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.7;">
+                        <strong>Anki:</strong> Spaced repetition flashcards<br>
+                        <strong>Notion:</strong> Digital organization & note-taking<br>
+                        <strong>Khan Academy:</strong> Free video explanations<br>
+                        <strong>Desmos:</strong> Interactive graphing calculator<br>
+                        <strong>Grammarly:</strong> Writing assistance<br>
+                        <strong>Forest App:</strong> Focus timer with gamification<br>
+                    </p>
+                </section>
+
+                <section class="card">
+                    <h3>💪 Stress Management During Exams</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 12px 0; border-bottom: 1px solid #eee;">
+                            ✅ Sleep 7-9 hours per night
+                        </li>
+                        <li style="padding: 12px 0; border-bottom: 1px solid #eee;">
+                            ✅ Exercise 30 min daily
+                        </li>
+                        <li style="padding: 12px 0; border-bottom: 1px solid #eee;">
+                            ✅ Meditate or breathe deeply
+                        </li>
+                        <li style="padding: 12px 0; border-bottom: 1px solid #eee;">
+                            ✅ Eat regular, healthy meals
+                        </li>
+                        <li style="padding: 12px 0;">
+                            ✅ Talk to friends, see tutors, ask questions
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="card crisis-support">
+                    <h3>🆘 Need Support?</h3>
+                    <p>Feeling overwhelmed? Your campus has resources:</p>
+                    <ul class="crisis-links">
+                        <li><strong>Tutoring:</strong> Academic support</li>
+                        <li><strong>Counseling:</strong> Mental health support</li>
+                        <li><strong>Crisis Line:</strong> <a href="tel:988">988</a></li>
+                    </ul>
+                </section>
+            </aside>
+        </div>
+    </main>
+
+    <script src="js/app.js" defer></script>
+
+    <!-- Toast notifications -->
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Chatbot Widget HTML -->
+    <div id="chatbotWidget" class="chatbot-widget">
+        <div id="chatbotContent" class="chatbot-content">
+            <div class="chatbot-header">
+                <h3>StudyBuddy AI</h3>
+                <button id="closeChatbot" class="chatbot-close" aria-label="Close chat">✕</button>
+            </div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <div class="chat-input-area">
+                <input id="chatInput" type="text" class="chat-input" placeholder="Ask me anything..."
+                    aria-label="Chat message input">
+                <button id="sendChatBtn" class="chat-send" aria-label="Send message">➤</button>
+            </div>
+        </div>
+        <button id="chatbotToggle" class="chatbot-toggle" aria-label="Open chat">💬</button>
+    </div>
+
+    <!-- Flowise API Integration -->
+    <script>
+        const FLOWISE_CONFIG = {
+            apiHost: "https://cloud.flowiseai.com",
+            chatflowId: "a7d8418d-c0f1-4750-a927-2e7107d173a3",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+
+        async function queryFlowise(question) {
+            try {
+                const response = await fetch(
+                    `${FLOWISE_CONFIG.apiHost}/api/v1/prediction/${FLOWISE_CONFIG.chatflowId}`,
+                    {
+                        method: "POST",
+                        headers: FLOWISE_CONFIG.headers,
+                        body: JSON.stringify({
+                            question: question
+                        })
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                return result;
+            } catch (error) {
+                console.error("Flowise Query Error:", error);
+                return { error: error.message };
+            }
+        }
+
+        window.queryFlowise = queryFlowise;
+    </script>
+</body>
+
+</html>

@@ -1,86 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CampusConnect Portal - Republic Polytechnic</title>
-  <link rel="stylesheet" href="./styles/portal.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusConnect Portal - Republic Polytechnic</title>
+    <link rel="stylesheet" href="./styles/portal.css">
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav>
-    <div class="navbar-container">
-      <div class="navbar-left">Republic Polytechnic</div>
-      <div class="navbar-center">CampusConnect Portal</div>
-      <div class="navbar-right">
-        <span class="badge">Student Access</span>
-      </div>
-    </div>
-  </nav>
+    <!-- Sticky Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-left">
+                <span class="navbar-brand">Republic Polytechnic</span>
+            </div>
+            <div class="navbar-center">
+                <span class="navbar-title">CampusConnect Portal</span>
+            </div>
+            <div class="navbar-right">
+                <span class="badge">Student Access</span>
+            </div>
+        </div>
+    </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-container">
-      <h1>CampusConnect</h1>
-      <p>Your one-stop student support & campus services</p>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1 class="hero-title">CampusConnect</h1>
+            <p class="hero-subtitle">Your one-stop student support & campus services</p>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="serviceSearch" 
+                    class="search-input" 
+                    placeholder="Search services..."
+                    aria-label="Search services">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </div>
+        </div>
+    </section>
 
-  <!-- Search Bar -->
-  <div class="search-container">
-    <div class="search-box">
-      <input
-        type="text"
-        class="search-input"
-        id="searchInput"
-        placeholder="Search services..."
-      >
-      <button class="search-btn" id="searchBtn">Search</button>
-    </div>
-  </div>
+    <!-- Services Grid -->
+    <main class="services-section">
+        <div class="services-container">
+            <div class="services-grid" id="servicesGrid">
+                <!-- Budget Makan -->
+                <a href="./budget-makan.html" class="service-card" data-service="budget makan food dining meal">
+                    <div class="card-icon">🍽️</div>
+                    <h3 class="card-title">Budget Makan</h3>
+                    <p class="card-description">Track your dining expenses and discover affordable meal options on campus</p>
+                    <span class="card-link">Access Service →</span>
+                </a>
 
-  <!-- Services Section -->
-  <section class="services">
-    <h2>Our Services</h2>
-    <div class="cards-grid" id="servicesGrid">
-      <!-- Service Cards -->
-      <a href="./budget-makan.html" class="service-card" data-service="budget-makan">
-        <div class="card-icon">🍽️</div>
-        <h3>Budget Makan</h3>
-        <p>Discover affordable food options and dining deals on campus</p>
-      </a>
+                <!-- Facilities Booking -->
+                <a href="./facilities-booking.html" class="service-card" data-service="facilities booking room venue space reservation">
+                    <div class="card-icon">📅</div>
+                    <h3 class="card-title">Facilities Booking</h3>
+                    <p class="card-description">Reserve study rooms, sports facilities, and other campus venues</p>
+                    <span class="card-link">Access Service →</span>
+                </a>
 
-      <a href="./facilities-booking.html" class="service-card" data-service="facilities">
-        <div class="card-icon">🏢</div>
-        <h3>Facilities Booking</h3>
-        <p>Book study rooms, meeting spaces, and campus facilities</p>
-      </a>
+                <!-- Explore CCAs -->
+                <a href="./explore-ccas.html" class="service-card" data-service="cca club activities extracurricular societies">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">Explore CCAs</h3>
+                    <p class="card-description">Discover and join co-curricular activities, clubs, and student organizations</p>
+                    <span class="card-link">Access Service →</span>
+                </a>
 
-      <a href="./explore-ccas.html" class="service-card" data-service="ccas">
-        <div class="card-icon">🎭</div>
-        <h3>Explore CCAs</h3>
-        <p>Join clubs, committees, and activities that match your interests</p>
-      </a>
+                <!-- Peer Support -->
+                <a href="./peer-support.html" class="service-card" data-service="peer support help wellness mental health counseling">
+                    <div class="card-icon">💚</div>
+                    <h3 class="card-title">Peer Support</h3>
+                    <p class="card-description">Access mental wellness resources and connect with peer support services</p>
+                    <span class="card-link">Access Service →</span>
+                </a>
 
-      <a href="./peer-support.html" class="service-card" data-service="peer-support">
-        <div class="card-icon">🤝</div>
-        <h3>Peer Support</h3>
-        <p>Connect with peers for emotional and academic support</p>
-      </a>
+                <!-- StudyConnect -->
+                <a href="./studyconnect.html" class="service-card" data-service="study connect partner group tutor academic learning">
+                    <div class="card-icon">📚</div>
+                    <h3 class="card-title">StudyConnect</h3>
+                    <p class="card-description">Find study partners, form study groups, and collaborate on academic projects</p>
+                    <span class="card-link">Access Service →</span>
+                </a>
+            </div>
 
-      <a href="./studyconnect.html" class="service-card" data-service="study">
-        <div class="card-icon">📚</div>
-        <h3>StudyConnect</h3>
-        <p>Find study partners and organize group study sessions</p>
-      </a>
-    </div>
-  </section>
+            <!-- No Results Message -->
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>No services found matching your search.</p>
+            </div>
+        </div>
+    </main>
 
-  <!-- Footer -->
-  <footer>
-    <p>Republic Polytechnic • Singapore</p>
-  </footer>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Republic Polytechnic • Singapore</p>
+    </footer>
 
-  <script src="./scripts/portal.js"></script>
+    <script src="./scripts/portal.js"></script>
 </body>
 </html>

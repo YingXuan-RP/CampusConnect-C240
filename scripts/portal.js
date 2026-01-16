@@ -1,88 +1,205 @@
-// CampusConnect Portal - Reusable Portal Functionality
+// ===================================
+// CampusConnect Portal JavaScript
+// ===================================
 
-document.addEventListener('DOMContentLoaded', function () {
-  // Search functionality
-  const searchInput = document.getElementById('searchInput');
-  const searchBtn = document.getElementById('searchBtn');
-  const servicesGrid = document.getElementById('servicesGrid');
-
-  if (searchInput && searchBtn && servicesGrid) {
-    // Function to filter services based on search input
-    function filterServices() {
-      const searchTerm = searchInput.value.toLowerCase().trim();
-
-      // Get all service cards
-      const serviceCards = servicesGrid.querySelectorAll('.service-card');
-
-      serviceCards.forEach((card) => {
-        const title = card.querySelector('h3').textContent.toLowerCase();
-        const description = card.querySelector('p').textContent.toLowerCase();
-
-        // Show card if search term matches title or description, or if search is empty
-        if (
-          searchTerm === '' ||
-          title.includes(searchTerm) ||
-          description.includes(searchTerm)
-        ) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
-    // Event listeners for search
-    searchBtn.addEventListener('click', filterServices);
-    searchInput.addEventListener('keyup', filterServices);
-    searchInput.addEventListener('input', filterServices);
-  }
-
-  // Optional: Auto-adjust iframe height for content
-  const iframes = document.querySelectorAll('.iframe-wrapper');
-  iframes.forEach((iframe) => {
-    iframe.addEventListener('load', function () {
-      try {
-        // Try to adjust height based on content
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-        if (iframeDoc && iframeDoc.body) {
-          // Note: This may not work if iframe content is cross-origin
-          iframe.style.height = Math.max(
-            600,
-            iframeDoc.body.scrollHeight + 20
-          ) + 'px';
-        }
-      } catch (e) {
-        // Cross-origin iframe - cannot adjust height
-        console.log('Cannot adjust iframe height due to cross-origin restrictions');
-      }
-    });
-
-    // Set a default minimum height in case load event doesn't fire
-    if (!iframe.style.height) {
-      iframe.style.height = 'calc(100vh - 80px)';
-    }
-  });
-
-  // Mobile menu toggle (if needed in future)
-  const navbarContainer = document.querySelector('.navbar-container');
-  if (navbarContainer) {
-    // Add mobile responsiveness
-    window.addEventListener('resize', function () {
-      if (window.innerWidth <= 768) {
-        // Mobile adjustments could be added here
-      }
-    });
-  }
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSearchFilter();
+    initializeIframeHandling();
 });
 
-// Utility function to highlight search terms in results
-function highlightSearchTerm(text, term) {
-  if (!term) return text;
-  const regex = new RegExp(`(${term})`, 'gi');
-  return text.replace(regex, '<mark>$1</mark>');
+// ===================================
+// Search Filter Functionality
+// ===================================
+function initializeSearchFilter() {
+    const searchInput = document.getElementById('serviceSearch');
+    if (!searchInput) return;
+
+    const servicesGrid = document.getElementById('servicesGrid');
+    const noResults = document.getElementById('noResults');
+
+    searchInput.addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase().trim();
+        const serviceCards = servicesGrid.querySelectorAll('.service-card');
+        let visibleCount = 0;
+
+        serviceCards.forEach(card => {
+            const searchData = card.getAttribute('data-service') || '';
+            const title = card.querySelector('.card-title')?.textContent || '';
+            const description = card.querySelector('.card-description')?.textContent || '';
+            
+            const searchableContent = (searchData + ' ' + title + ' ' + description).toLowerCase();
+            
+            if (searchableContent.includes(searchTerm)) {
+                card.style.display = 'flex';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // Show/hide no results message
+        if (visibleCount === 0 && searchTerm !== '') {
+            noResults.style.display = 'block';
+            servicesGrid.style.display = 'none';
+        } else {
+            noResults.style.display = 'none';
+            servicesGrid.style.display = 'grid';
+        }
+    });
+
+    // Clear search on escape key
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            searchInput.value = '';
+            searchInput.dispatchEvent(new Event('input'));
+            searchInput.blur();
+        }
+    });
 }
 
-// Export functions for potential reuse
-window.portalUtils = {
-  highlightSearchTerm,
-};
+// ===================================
+// Iframe Height Management
+// ===================================
+function initializeIframeHandling() {
+    const iframe = document.querySelector('.iframe-container iframe');
+    if (!iframe) return;
+
+    // Set initial height
+    adjustIframeHeight();
+
+    // Adjust on window resize
+    window.addEventListener('resize', adjustIframeHeight);
+
+    // Listen for messages from iframe (if child pages send height updates)
+    window.addEventListener('message', function(event) {
+        // Security: validate origin if needed
+        if (event.data && event.data.type === 'resize') {
+            const height = event.data.height;
+            if (height && typeof height === 'number') {
+                iframe.style.height = height + 'px';
+            }
+        }
+    });
+
+    // Handle iframe load event
+    iframe.addEventListener('load', function() {
+        console.log('Iframe loaded successfully');
+        adjustIframeHeight();
+    });
+
+    // Handle iframe errors
+    iframe.addEventListener('error', function() {
+        console.error('Failed to load iframe content');
+        showIframeError();
+    });
+}
+
+function adjustIframeHeight() {
+    const iframe = document.querySelector('.iframe-container iframe');
+    if (!iframe) return;
+
+    const navbar = document.querySelector('.navbar');
+    const infoTip = document.querySelector('.info-tip');
+    
+    const navbarHeight = navbar ? navbar.offsetHeight : 70;
+    const tipHeight = infoTip ? infoTip.offsetHeight : 45;
+    
+    const calculatedHeight = window.innerHeight - navbarHeight - tipHeight;
+    iframe.style.height = calculatedHeight + 'px';
+}
+
+function showIframeError() {
+    const container = document.querySelector('.iframe-container');
+    if (!container) return;
+
+    container.innerHTML = `
+        <div style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 40px;
+            text-align: center;
+            color: #6B7280;
+        ">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width: 64px; height: 64px; margin-bottom: 20px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <h3 style="font-size: 1.25rem; margin-bottom: 12px; color: #1F2937;">Failed to Load Content</h3>
+            <p style="margin-bottom: 20px;">The service content could not be loaded. Please try again.</p>
+            <a href="./index.html" style="
+                background-color: #0B8F3A;
+                color: white;
+                padding: 10px 24px;
+                border-radius: 6px;
+                font-weight: 600;
+                text-decoration: none;
+            ">← Back to Portal</a>
+        </div>
+    `;
+}
+
+// ===================================
+// Accessibility Enhancements
+// ===================================
+
+// Add keyboard navigation for service cards
+document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            window.location.href = card.getAttribute('href');
+        }
+    });
+});
+
+// Add focus management
+document.addEventListener('keydown', function(e) {
+    // Focus search on Ctrl/Cmd + K
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.getElementById('serviceSearch');
+        if (searchInput) {
+            searchInput.focus();
+            searchInput.select();
+        }
+    }
+});
+
+// ===================================
+// Performance Optimization
+// ===================================
+
+// Debounce function for search
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// ===================================
+// Analytics (Optional - placeholder)
+// ===================================
+function trackServiceAccess(serviceName) {
+    // Placeholder for analytics tracking
+    console.log('Service accessed:', serviceName);
+    // Example: Send to analytics service
+    // analytics.track('service_access', { service: serviceName });
+}
+
+// Track service card clicks
+document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', function() {
+        const serviceName = this.querySelector('.card-title')?.textContent;
+        if (serviceName) {
+            trackServiceAccess(serviceName);
+        }
+    });
+});

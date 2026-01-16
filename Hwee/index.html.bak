@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>StudyBuddy — Your AI Student Companion</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <h1 class="site-title"><a href="index.html">🎓 StudyBuddy</a></h1>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="resources.html">Study Guides</a>
+                <a href="about.html">About</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggle" class="btn" aria-pressed="false">Dark</button>
+                <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container main" id="main">
+        <!-- Professional hero section (clean healthcare style) -->
+        <!-- Daily Affirmation Banner -->
+        <section class="affirmation-banner card">
+            <div class="affirmation-content">
+                <span class="affirmation-icon">✨</span>
+                <div class="affirmation-text">
+                    <h3>Today's Affirmation</h3>
+                    <p id="dailyAffirmation" class="affirmation-message">You are worthy of support and care.</p>
+                </div>
+                <button id="nextAffirmation" class="btn-icon" aria-label="Next affirmation">→</button>
+            </div>
+        </section>
+
+        <section class="hero hero-pro">
+            <div class="hero-inner">
+                <div class="hero-copy">
+                    <h2>Care. Support. Listening.</h2>
+                    <p class="lead">PeerSupportSite is a calm, private space for students to reflect, learn coping
+                        skills,
+                        and find campus resources when they need them.</p>
+                    <div class="hero-ctas">
+                        <a class="btn" href="#mood">Reflect Now</a>
+                        <a class="btn ghost" href="resources.html">Find Support</a>
+                    </div>
+                </div>
+                <div class="hero-media" aria-hidden="true">
+                    <!-- subtle illustration / placeholder -->
+                    <div class="illustration">🫶</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- two-column content: left main, right highlights -->
+        <div class="grid">
+            <div class="col main-col">
+                <section id="mood" class="card mood-card" aria-labelledby="moodLabel">
+                    <h3 id="moodLabel">How are you feeling right now?</h3>
+                    <div class="mood-options" id="moodOptions" role="radiogroup" aria-label="Mood selector">
+                        <button class="mood" data-mood="calm">Calm</button>
+                        <button class="mood" data-mood="sad">Sad</button>
+                        <button class="mood" data-mood="anxious">Anxious</button>
+                        <button class="mood" data-mood="stressed">Stressed</button>
+                        <button class="mood" data-mood="neutral">Neutral</button>
+                    </div>
+                    <div id="moodMessage" class="mood-message" aria-live="polite"></div>
+                    <div class="journal">
+                        <label for="journalInput">Write a short note (optional)</label>
+                        <textarea id="journalInput" rows="3" placeholder="A sentence or two..."
+                            aria-label="Journal entry"></textarea>
+                        <div class="journal-actions">
+                            <button id="saveEntry" class="btn">Save Entry</button>
+                            <button id="clearHistory" class="btn ghost">Clear History</button>
+                        </div>
+                        <h4>Recent entries</h4>
+                        <ul id="moodHistory" class="history-list" aria-live="polite"></ul>
+                    </div>
+                </section>
+
+                <section class="card testimonials-card">
+                    <h3>Student Stories</h3>
+                    <p class="lead">Short testimonials from students who found this space helpful.</p>
+                    <ul id="testimonialsList" class="testimonials-list" aria-live="polite"></ul>
+                    <form id="testimonialForm" class="small-form" aria-label="Add a testimonial">
+                        <input id="testName" type="text" placeholder="Your name (optional)" aria-label="Name">
+                        <textarea id="testText" rows="3" placeholder="How did this site help you?" maxlength="600"
+                            aria-label="Testimonial"></textarea>
+                        <div class="form-actions">
+                            <button id="addTestimonial" class="btn">Share Story</button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="card blog-card">
+                    <h3>Encouraging Quotes</h3>
+                    <p class="lead">Add a short encouraging message to inspire other students.</p>
+                    <ul id="quotesList" class="quotes-list" aria-live="polite"></ul>
+                    <form id="quoteForm" class="small-form" aria-label="Add a quote">
+                        <input id="quoteName" type="text" placeholder="Name (optional)" aria-label="Name">
+                        <input id="quoteText" type="text" placeholder="Write an encouraging quote (max 140 chars)"
+                            maxlength="140" aria-label="Quote">
+                        <div class="form-actions">
+                            <button id="addQuote" class="btn">Post Quote</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+            <aside class="col side-col">
+                <!-- Mood Progress Tracker -->
+                <section class="card mood-tracker-card">
+                    <h3>Your Mood This Week</h3>
+                    <p class="lead">Track your emotional patterns and celebrate progress.</p>
+                    <svg class="section-illustration" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"
+                        style="width: 100%; max-width: 180px; margin: 12px auto; display: block;">
+                        <rect x="10" y="40" width="12" height="15" fill="#10b981" opacity="0.7" rx="2" />
+                        <rect x="28" y="35" width="12" height="20" fill="#3b82f6" opacity="0.7" rx="2" />
+                        <rect x="46" y="30" width="12" height="25" fill="#f59e0b" opacity="0.7" rx="2" />
+                        <rect x="64" y="25" width="12" height="30" fill="#ef4444" opacity="0.7" rx="2" />
+                    </svg>
+                    <div class="mood-chart" id="moodChart" aria-label="Mood chart for the week"></div>
+                    <div class="mood-stats" id="moodStats"></div>
+                    <button id="viewMoodInsights" class="btn ghost">View Detailed Insights</button>
+                </section>
+
+                <!-- Coping Strategies -->
+                <section class="card coping-card">
+                    <h3>Quick Coping Strategies</h3>
+                    <p class="lead">Proven techniques you can use right now:</p>
+                    <svg class="section-illustration" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"
+                        style="width: 100%; max-width: 200px; margin: 16px auto; display: block;">
+                        <circle cx="20" cy="30" r="15" fill="#ff6b9d" opacity="0.3" />
+                        <circle cx="80" cy="30" r="15" fill="#74b9ff" opacity="0.3" />
+                        <path d="M 30 20 Q 50 10 70 20" stroke="#fdcb6e" stroke-width="3" fill="none"
+                            stroke-linecap="round" />
+                    </svg>
+                    <div id="copingStrategies" class="coping-grid"></div>
+                </section>
+
+                <!-- Guided Exercises -->
+                <section class="card exercises-card">
+                    <h3>Guided Exercises</h3>
+                    <p class="lead">Choose an exercise that feels right for you:</p>
+                    <svg class="section-illustration" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"
+                        style="width: 100%; max-width: 200px; margin: 16px auto; display: block;">
+                        <ellipse cx="50" cy="30" rx="25" ry="20" fill="#ffd6a5" opacity="0.3" />
+                        <circle cx="45" cy="25" r="3" fill="#2d3748" />
+                        <circle cx="55" cy="25" r="3" fill="#2d3748" />
+                        <path d="M 45 35 Q 50 38 55 35" stroke="#ff9f64" stroke-width="2" fill="none"
+                            stroke-linecap="round" />
+                    </svg>
+                    <div class="exercises-grid" id="exercisesGrid"></div>
+                </section>
+
+                <!-- Self-Care Activities -->
+                <section class="card selfcare-card">
+                    <h3>Daily Self-Care Ideas</h3>
+                    <p class="lead">Small acts of kindness toward yourself:</p>
+                    <svg class="section-illustration" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"
+                        style="width: 100%; max-width: 200px; margin: 16px auto; display: block;">
+                        <path d="M 50 15 L 55 30 L 70 30 L 58 40 L 63 55 L 50 45 L 37 55 L 42 40 L 30 30 L 45 30 Z"
+                            fill="#ffeb3b" stroke="#fdcb6e" stroke-width="1.5" />
+                        <circle cx="30" cy="20" r="4" fill="#ff6b9d" opacity="0.6" />
+                        <circle cx="70" cy="25" r="3" fill="#74b9ff" opacity="0.6" />
+                    </svg>
+                    <div id="selfcareActivities" class="selfcare-grid"></div>
+                    <button id="getSelfcareIdea" class="btn">Get a Random Idea</button>
+                </section>
+                <section class="card tips-card" id="tipsCard">
+                    <h4>Wellbeing Tip</h4>
+                    <p>Small practices can make a difference. Click the button to reveal a short tip.</p>
+                    <button id="showTips" class="btn">View Wellbeing Tips</button>
+                    <ul id="tipsList" class="tips-list" hidden aria-live="polite" role="status"></ul>
+                </section>
+
+                <section class="card quick-links">
+                    <h4>Quick Actions</h4>
+                    <div class="actions">
+                        <a class="btn ghost" href="resources.html">Find Support Resources</a>
+                        <a class="btn ghost" href="about.html">About Emotional Wellness</a>
+                    </div>
+                </section>
+
+                <section class="card manage-data">
+                    <h4>Manage Your Data</h4>
+                    <p class="muted">Export a copy of your local entries or import a backup (this only affects your
+                        browser).</p>
+                    <div class="actions">
+                        <button id="exportData" class="btn">Export Data</button>
+                        <label for="importData" class="btn ghost" style="display:inline-block;">
+                            Import
+                            <input id="importData" type="file" accept="application/json" style="display:none">
+                        </label>
+                    </div>
+                </section>
+
+                <section class="card contact-card crisis">
+                    <h4>🆘 Need Immediate Support?</h4>
+                    <p class="muted">You're not alone. These services are available 24/7:</p>
+                    <ul class="crisis-links">
+                        <li><strong>National Crisis Hotline:</strong> 988 (call or text)</li>
+                        <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
+                        <li><a href="resources.html">Campus Counselling Centre</a> - 24/7 available</li>
+                        <li><strong>Emergency:</strong> 911 for immediate danger</li>
+                    </ul>
+                    <p class="muted" style="font-size: 0.85rem; margin-top: 12px;">Your feelings matter. Reaching
+                        out is a sign of strength.</p>
+                </section>
+            </aside>
+        </div>
+
+        <footer class="site-footer card">
+            <p>Not a replacement for professional care. If you are in crisis, contact local emergency services or
+                campus
+                counselling immediately.</p>
+        </footer>
+    </main>
+
+    <script src="js/app.js" defer></script>
+
+    <!-- Breathing modal -->
+    <div id="breathModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true"
+        aria-labelledby="breathTitle">
+        <div class="modal-content">
+            <h3 id="breathTitle">Guided Breathing</h3>
+            <p id="breathText" class="breath-text">Follow the prompts below.</p>
+            <div id="breathCounter" class="breath-counter" aria-live="polite"></div>
+            <div class="modal-actions">
+                <button id="stopBreath" class="btn ghost">Stop</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exercise Modal -->
+    <div id="exerciseModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true"
+        aria-labelledby="exerciseTitle">
+        <div class="modal-content">
+            <button class="modal-close" id="closeExerciseModal" aria-label="Close">&times;</button>
+            <h3 id="exerciseTitle">Guided Exercise</h3>
+            <div id="exerciseContent" class="exercise-content"></div>
+            <div class="modal-actions">
+                <button id="startExercise" class="btn">Start Now</button>
+                <button class="btn ghost" id="closeExercise">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Journaling Prompts Modal -->
+    <div id="journalPromptModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true"
+        aria-labelledby="promptTitle">
+        <div class="modal-content">
+            <button class="modal-close" id="closePromptModal" aria-label="Close">&times;</button>
+            <h3 id="promptTitle">Journaling Prompt</h3>
+            <p id="journalPrompt" class="prompt-text"></p>
+            <textarea id="promptResponse" rows="5" placeholder="Take your time and write what comes to mind..."
+                aria-label="Journal response"></textarea>
+            <div class="modal-actions">
+                <button id="savePromptResponse" class="btn">Save Response</button>
+                <button class="btn ghost" id="skipPrompt">Skip</button>
+            </div>
+        </div>
+    </div>
+    <!-- Toast notifications -->
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Flowise REST API Integration -->
+    <script>
+        // Flowise API Configuration
+        const FLOWISE_CONFIG = {
+            apiHost: "https://cloud.flowiseai.com",
+            chatflowId: "a7d8418d-c0f1-4750-a927-2e7107d173a3",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+
+        // Main Query Function - Send questions to Flowise
+        async function queryFlowise(question) {
+            try {
+                const response = await fetch(
+                    `${FLOWISE_CONFIG.apiHost}/api/v1/prediction/${FLOWISE_CONFIG.chatflowId}`,
+                    {
+                        method: "POST",
+                        headers: FLOWISE_CONFIG.headers,
+                        body: JSON.stringify({
+                            question: question
+                        })
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                return result;
+            } catch (error) {
+                console.error("Flowise Query Error:", error);
+                return { error: error.message };
+            }
+        }
+
+        // Demo: Call the chatbot with a test question
+        // This runs once when the page loads - you can remove it later
+        (async function demoQuery() {
+            console.log("🤖 Sending demo question to Flowise...");
+
+            const response = await queryFlowise("Hey, how are you?");
+
+            console.log("📩 Flowise Response:", response);
+
+            // Display response text if available
+            if (response.text) {
+                console.log("💬 Bot says:", response.text);
+            }
+        })();
+
+        // Optional: Function to easily query the bot from anywhere
+        // Usage: sendChatMessage("What can you help me with?")
+        window.sendChatMessage = async function (message) {
+            console.log("👤 User:", message);
+            const response = await queryFlowise(message);
+            if (response.text) {
+                console.log("🤖 Bot:", response.text);
+            }
+            return response;
+        };
+    </script>
+    <!-- Chatbot Widget HTML -->
+    <div id="chatbotWidget" class="chatbot-widget">
+        <div id="chatbotContent" class="chatbot-content">
+            <div class="chatbot-header">
+                <h3>Chat Support</h3>
+                <button id="closeChatbot" class="chatbot-close" aria-label="Close chat">✕</button>
+            </div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <div class="chat-input-area">
+                <input id="chatInput" type="text" class="chat-input" placeholder="Ask me anything..."
+                    aria-label="Chat message input">
+                <button id="sendChatBtn" class="chat-send" aria-label="Send message">➤</button>
+            </div>
+        </div>
+        <button id="chatbotToggle" class="chatbot-toggle" aria-label="Open chat">💬</button>
+    </div>
+</body>
+
+</html>
