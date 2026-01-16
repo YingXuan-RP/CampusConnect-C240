@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusConnect Portal - Republic Polytechnic</title>
+  <link rel="stylesheet" href="./styles/portal.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="navbar-container">
+      <div class="navbar-left">Republic Polytechnic</div>
+      <div class="navbar-center">CampusConnect Portal</div>
+      <div class="navbar-right">
+        <span class="badge">Student Access</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <h1>CampusConnect</h1>
+      <p>Your one-stop student support & campus services</p>
+    </div>
+  </section>
+
+  <!-- Search Bar -->
+  <div class="search-container">
+    <div class="search-box">
+      <input
+        type="text"
+        class="search-input"
+        id="searchInput"
+        placeholder="Search services..."
+      >
+      <button class="search-btn" id="searchBtn">Search</button>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <section class="services">
+    <h2>Our Services</h2>
+    <div class="cards-grid" id="servicesGrid">
+      <!-- Service Cards -->
+      <a href="./budget-makan.html" class="service-card" data-service="budget-makan">
+        <div class="card-icon">🍽️</div>
+        <h3>Budget Makan</h3>
+        <p>Discover affordable food options and dining deals on campus</p>
+      </a>
+
+      <a href="./facilities-booking.html" class="service-card" data-service="facilities">
+        <div class="card-icon">🏢</div>
+        <h3>Facilities Booking</h3>
+        <p>Book study rooms, meeting spaces, and campus facilities</p>
+      </a>
+
+      <a href="./explore-ccas.html" class="service-card" data-service="ccas">
+        <div class="card-icon">🎭</div>
+        <h3>Explore CCAs</h3>
+        <p>Join clubs, committees, and activities that match your interests</p>
+      </a>
+
+      <a href="./peer-support.html" class="service-card" data-service="peer-support">
+        <div class="card-icon">🤝</div>
+        <h3>Peer Support</h3>
+        <p>Connect with peers for emotional and academic support</p>
+      </a>
+
+      <a href="./studyconnect.html" class="service-card" data-service="study">
+        <div class="card-icon">📚</div>
+        <h3>StudyConnect</h3>
+        <p>Find study partners and organize group study sessions</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Republic Polytechnic • Singapore</p>
+  </footer>
+
+  <script src="./scripts/portal.js"></script>
+</body>
+</html>
